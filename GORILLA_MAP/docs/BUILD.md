@@ -5,6 +5,7 @@
 ```sh
 python tools/test_packaging.py
 python tools/test_source_checks.py
+python tools/test_ui_layout.py
 python tools/verify.py
 python tools/build.py
 python tools/verify.py --pbo dist/@GorillaMap/addons/gorillamap.pbo --server-pbo dist/@GorillaMapServer/addons/gorillamap_server.pbo
@@ -66,3 +67,7 @@ python tools/verify.py --pbo dist/@GorillaMap/addons/gorillamap.pbo --server-pbo
 Сначала проверьте чистый dedicated ChernarusPlus без других модов, затем ваш набор модов. Игрок загружает только общий/клиентский PBO; на dedicated загружаются оба. Это проверяет, что клиент компилируется без серверных классов и сервер получает общие DTO через явную зависимость.
 
 Для итогового теста используйте собранные PBO без `-filePatching`, проверьте клиентский и серверный RPT/script logs, личные метки после рестарта, групповые права, приглашения, закрытие UI, масштабирование и координаты карты. Инструменты в этом репозитории не заменяют эти испытания.
+
+## Предпросмотр оформления
+
+Необязательная команда `python tools/render_preview.py` создаёт `docs/UI_PREVIEW.png` из native layout и исходных PNG. Требуется Pillow. Это макет на нейтральном фоне, не рендер движка; для запуска мода Pillow не нужен.

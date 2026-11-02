@@ -15,6 +15,7 @@ modded class MissionGameplay
         super.OnInit();
         GMapClient.Reset();
         GMapClientRPC.Init();
+        Print("[GORILLA MAP 0.1.3] Client initialized; open action=UAGorillaMapOpen (default F6)");
     }
 
     override void OnMissionFinish()
@@ -26,13 +27,17 @@ modded class MissionGameplay
 
     override void OnUpdate(float timeslice)
     {
-        // Open before vanilla checks M: an existing menu prevents a second map.
-        UAInput mapInput = GetUApi().GetInputByName("UAGorillaMapToggle");
+        // Separate action/default key from the vanilla and third-party maps on M.
+        UAInput mapInput = GetUApi().GetInputByName("UAGorillaMapOpen");
         PlayerBase mapPlayer = PlayerBase.Cast(GetGame().GetPlayer());
         if (mapInput && mapInput.LocalPress() && mapPlayer && mapPlayer.IsAlive() && !mapPlayer.IsUnconscious())
         {
             if (!GetGame().GetUIManager().GetMenu())
-                GetGame().GetUIManager().EnterScriptedMenu(784193, null);
+            {
+                UIScriptedMenu opened = GetGame().GetUIManager().EnterScriptedMenu(784193, null);
+                if (!GMapMenu.Cast(opened))
+                    Print("[GORILLA MAP 0.1.3] ERROR: menu factory did not create GMapMenu");
+            }
         }
         super.OnUpdate(timeslice);
     }

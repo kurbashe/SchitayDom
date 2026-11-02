@@ -89,6 +89,8 @@ class GMapClient
         string error;
         if (!JsonFileLoader<GMapSnapshot>.LoadData(json, snapshot, error) || !snapshot) return;
         if (snapshot.Version != 1 || !snapshot.Markers || !snapshot.OnlinePlayers || !snapshot.GroupMembers) return;
+        if (Revision == 0 || snapshot.Ready != State.Ready)
+            Print("[GORILLA MAP 0.1.3] SNAPSHOT: ready=" + snapshot.Ready.ToString() + " markers=" + snapshot.Markers.Count().ToString());
         State = snapshot;
         Revision++;
     }

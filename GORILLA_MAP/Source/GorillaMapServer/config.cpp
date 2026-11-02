@@ -16,7 +16,7 @@ class CfgMods
         dir = "GorillaMapServer";
         name = "GORILLA MAP Server";
         author = "GORILLA";
-        version = "0.1.2";
+        version = "0.1.3";
         type = "mod";
         dependencies[] = {"Game", "World", "Mission"};
         class defs

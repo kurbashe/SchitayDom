@@ -27,14 +27,44 @@ class GMapMenu extends UIScriptedMenu
     protected float m_Poll;
     protected float m_Draw;
     protected float m_OpenTime;
+    protected ref GMapMapHandler m_MapHandler;
+    protected IngameHud m_Hud;
+    protected bool m_HudHidden;
+    protected bool m_PreviousMenuOpen;
+    protected bool m_PreviousQuickbarDisabled;
+    protected bool m_Shown;
+    protected bool m_CloseRequested;
+    protected bool m_LayoutReady;
+    protected int m_LastBackTime = -1000;
 
     override Widget Init()
     {
         layoutRoot = GetGame().GetWorkspace().CreateWidgets("GorillaMap/GUI/layouts/main.layout");
         if (!layoutRoot)
+        {
+            Print("[GORILLA MAP 0.1.3] ERROR: main.layout could not be created");
             return null;
+        }
         m_Map = MapWidget.Cast(W("Map"));
         m_Canvas = CanvasWidget.Cast(W("ZoneCanvas"));
+        m_LayoutReady = m_Map && m_Canvas && W("Sidebar") && W("Editor") && W("CreateMarker") && W("CloseMap");
+        layoutRoot.SetSort(1000);
+        if (m_Map) m_Map.SetSort(0);
+        if (m_Canvas) m_Canvas.SetSort(10);
+        if (W("PlayerLabel")) W("PlayerLabel").SetSort(20);
+        if (W("Sidebar")) W("Sidebar").SetSort(100);
+        if (W("InfoCard")) W("InfoCard").SetSort(110);
+        if (W("WorldBadge")) W("WorldBadge").SetSort(110);
+        if (W("Compass")) W("Compass").SetSort(110);
+        if (W("ExpandSidebarFrame")) W("ExpandSidebarFrame").SetSort(120);
+        if (W("Editor")) W("Editor").SetSort(300);
+        if (W("Groups")) W("Groups").SetSort(300);
+        if (W("Settings")) W("Settings").SetSort(300);
+        Show("Sidebar", true);
+        Show("ExpandSidebar", false);
+        Show("Editor", false);
+        Show("Groups", false);
+        Show("Settings", false);
         m_Prefs = GMapPreferences.Load();
         m_InitialCenter = GMapClient.Revision == 0;
         if (m_Map)
@@ -46,6 +76,79 @@ class GMapMenu extends UIScriptedMenu
         RefreshSettings();
         GMapClient.Send("snapshot");
         return layoutRoot;
+    }
+
+    override void OnShow()
+    {
+        if (m_Shown) return;
+        super.OnShow();
+        m_Shown = true;
+        m_CloseRequested = false;
+        if (!m_LayoutReady)
+        {
+            Print("[GORILLA MAP 0.1.3] ERROR: required UI widgets are missing; closing instead of locking input");
+            RequestClose();
+            return;
+        }
+        m_MapHandler = new GMapMapHandler(this);
+        m_Map.SetHandler(m_MapHandler);
+        BindControlHandlers(layoutRoot, m_MapHandler);
+        SetFocus(m_Map);
+        if (GetGame().GetMission())
+            m_Hud = IngameHud.Cast(GetGame().GetMission().GetHud());
+        if (m_Hud && m_Hud.GetHudVisibility() && !m_HudHidden)
+        {
+            m_PreviousMenuOpen = m_Hud.GetHudVisibility().IsContextFlagActive(EHudContextFlags.MENU_OPEN);
+            m_PreviousQuickbarDisabled = m_Hud.GetHudVisibility().IsContextFlagActive(EHudContextFlags.QUICKBAR_DISABLE);
+            m_Hud.ShowHudUI(false);
+            m_Hud.ShowQuickbarUI(false);
+            m_HudHidden = true;
+        }
+        Print("[GORILLA MAP 0.1.3] OPEN: menu=GMapMenu sidebar=" + W("Sidebar").IsVisibleHierarchy().ToString() + " priority=" + W("Sidebar").GetSort().ToString());
+    }
+
+    protected void RestorePresentation()
+    {
+        if (m_HudHidden && m_Hud)
+        {
+            m_Hud.ShowHudUI(!m_PreviousMenuOpen);
+            m_Hud.ShowQuickbarUI(!m_PreviousQuickbarDisabled);
+        }
+        m_HudHidden = false;
+        if (m_Map) m_Map.SetHandler(null);
+        if (layoutRoot) BindControlHandlers(layoutRoot, null);
+        if (m_MapHandler) m_MapHandler.Detach();
+        m_MapHandler = null;
+    }
+
+    protected void BindControlHandlers(Widget parent, ScriptedWidgetEventHandler handler)
+    {
+        Widget child = parent.GetChildren();
+        while (child)
+        {
+            if (ButtonWidget.Cast(child) || EditBoxWidget.Cast(child)) child.SetHandler(handler);
+            BindControlHandlers(child, handler);
+            child = child.GetSibling();
+        }
+    }
+
+    protected void RequestClose()
+    {
+        if (m_CloseRequested) return;
+        m_CloseRequested = true;
+        Close();
+    }
+
+    protected void HandleBack()
+    {
+        int now = GetGame().GetTime();
+        if (now - m_LastBackTime < 200) return;
+        m_LastBackTime = now;
+        if (Visible("Editor")) Show("Editor", false);
+        else if (Visible("Groups")) Show("Groups", false);
+        else if (Visible("Settings")) Show("Settings", false);
+        else RequestClose();
+        if (!m_CloseRequested && m_Map) SetFocus(m_Map);
     }
 
     protected Widget W(string name)
@@ -93,22 +196,38 @@ class GMapMenu extends UIScriptedMenu
             m_Prefs.Scale = m_Map.GetScale();
             m_Prefs.Save();
         }
+        RestorePresentation();
         // UIScriptedMenu owns input focus and the death subscription.
-        super.OnHide();
+        if (m_Shown)
+        {
+            m_Shown = false;
+            super.OnHide();
+        }
+        Print("[GORILLA MAP 0.1.3] CLOSE: HUD and input focus restored");
     }
 
     override void Update(float timeslice)
     {
         super.Update(timeslice);
         m_OpenTime += timeslice;
+        // Read the UI back action even when the MapWidget or text field owns focus.
+        if (m_OpenTime > 0.2 && GetUApi().GetInputByID(UAUIBack).LocalPress())
+        {
+            HandleBack();
+            return;
+        }
+        if (m_CloseRequested) return;
         PlayerBase player = PlayerBase.Cast(GetGame().GetPlayer());
         if (!player || !player.IsAlive() || player.IsUnconscious())
         {
-            Close();
+            RequestClose();
             return;
         }
-        if (!m_Map)
+        if (!m_LayoutReady)
+        {
+            RequestClose();
             return;
+        }
         if (GMapClient.Revision != m_LastRevision)
         {
             m_LastRevision = GMapClient.Revision;
@@ -132,9 +251,9 @@ class GMapMenu extends UIScriptedMenu
             SetText("Coordinates", CoordinateText(m_CursorWorld));
             DrawOverlay(player);
         }
-        UAInput toggle = GetUApi().GetInputByName("UAGorillaMapToggle");
+        UAInput toggle = GetUApi().GetInputByName("UAGorillaMapOpen");
         if (m_OpenTime > 0.3 && toggle && toggle.LocalPress() && !Modal())
-            Close();
+            RequestClose();
     }
 
     protected string CoordinateText(vector position)
@@ -247,6 +366,7 @@ class GMapMenu extends UIScriptedMenu
             Widget rowWidget = GetGame().GetWorkspace().CreateWidgets("GorillaMap/GUI/layouts/marker_row.layout", parent);
             if (!rowWidget)
                 continue;
+            BindControlHandlers(rowWidget, m_MapHandler);
             GMapRow row = new GMapRow;
             row.Root = rowWidget;
             row.Marker = marker;
@@ -404,11 +524,6 @@ class GMapMenu extends UIScriptedMenu
 
     protected void OpenEditor(vector position, GMapMarker marker = null)
     {
-        if (!GMapClient.State || !GMapClient.State.Ready)
-        {
-            SetText("Status", "Дождитесь ответа сервера");
-            return;
-        }
         if (!PositionValid(position))
             return;
         m_EditId = "";
@@ -433,6 +548,8 @@ class GMapMenu extends UIScriptedMenu
         EditBoxWidget.Cast(W("EditorZ")).SetText(Math.Round(position[2]).ToString());
         Show("EditorDelete", marker != null);
         SetText("EditorError", "");
+        if (!GMapClient.State || !GMapClient.State.Ready)
+            SetText("EditorError", "Нет ответа сервера. Сохранение пока недоступно.");
         SetText("EditorDelete", "Удалить метку");
         Show("Editor", true);
         SetFocus(W("EditorName"));
@@ -494,6 +611,11 @@ class GMapMenu extends UIScriptedMenu
 
     protected void SaveEditor()
     {
+        if (!GMapClient.State || !GMapClient.State.Ready)
+        {
+            SetText("EditorError", "Нет ответа сервера. Метка не сохранена.");
+            return;
+        }
         string name = EditBoxWidget.Cast(W("EditorName")).GetText();
         name.TrimInPlace();
         float x, z;
@@ -620,7 +742,7 @@ class GMapMenu extends UIScriptedMenu
         // Buttons consume their own events; MapWidget retains native drag/zoom.
         switch (action)
         {
-            case "CloseMap": Close(); return true;
+            case "CloseMap": RequestClose(); return true;
             case "CollapseSidebar": Show("Sidebar", false); Show("ExpandSidebar", true); return true;
             case "ExpandSidebar": Show("Sidebar", true); Show("ExpandSidebar", false); return true;
             case "ToggleServer": ToggleRows("ServerRows"); return true;
@@ -746,10 +868,7 @@ class GMapMenu extends UIScriptedMenu
     {
         if (key == KeyCode.KC_ESCAPE)
         {
-            if (Visible("Editor")) Show("Editor", false);
-            else if (Visible("Groups")) Show("Groups", false);
-            else if (Visible("Settings")) Show("Settings", false);
-            else Close();
+            HandleBack();
             return true;
         }
         if (Modal())

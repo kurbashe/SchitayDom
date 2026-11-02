@@ -1,4 +1,8 @@
 FrameWidgetClass GMapRoot {
+ visible 1
+ disabled 0
+ priority 100
+ clipchildren 1
  position 0 0
  size 1 1
  hexactpos 0
@@ -8,6 +12,9 @@ FrameWidgetClass GMapRoot {
  ignorepointer 0
  {
   MapWidgetClass Map {
+   visible 1
+   disabled 0
+   priority 0
    position 0 0
    size 1 1
    hexactpos 0
@@ -17,6 +24,9 @@ FrameWidgetClass GMapRoot {
    ignorepointer 0
   }
   CanvasWidgetClass ZoneCanvas {
+   visible 1
+   disabled 0
+   priority 10
    position 0 0
    size 1 1
    hexactpos 0
@@ -26,6 +36,8 @@ FrameWidgetClass GMapRoot {
    ignorepointer 1
   }
   TextWidgetClass PlayerLabel {
+   disabled 0
+   priority 20
    position 0 0
    size 0.18 0.035
    hexactpos 0
@@ -44,6 +56,10 @@ FrameWidgetClass GMapRoot {
    "text valign" center
   }
   FrameWidgetClass Sidebar {
+   visible 1
+   disabled 0
+   priority 100
+   clipchildren 1
    position 0.012 0.025
    size 0.25 0.95
    hexactpos 0
@@ -52,6 +68,9 @@ FrameWidgetClass GMapRoot {
    vexactsize 0
    {
     ImageWidgetClass SidebarBackground {
+     visible 1
+     disabled 0
+     priority 0
      position 0 0
      size 1 1
      hexactpos 0
@@ -67,6 +86,9 @@ FrameWidgetClass GMapRoot {
      filter 1
     }
     ImageWidgetClass Logo {
+     visible 1
+     disabled 0
+     priority 5
      position 0.045 0.022
      size 0.17 0.085
      hexactpos 0
@@ -82,6 +104,9 @@ FrameWidgetClass GMapRoot {
      filter 1
     }
     TextWidgetClass Title {
+     visible 1
+     disabled 0
+     priority 10
      position 0.26 0.025
      size 0.67 0.045
      hexactpos 0
@@ -101,6 +126,9 @@ FrameWidgetClass GMapRoot {
      "size to text v" 0
     }
     TextWidgetClass Subtitle {
+     visible 1
+     disabled 0
+     priority 10
      position 0.26 0.07
      size 0.66 0.03
      hexactpos 0
@@ -120,6 +148,9 @@ FrameWidgetClass GMapRoot {
      "size to text v" 0
     }
     FrameWidgetClass CollapseSidebarFrame {
+     visible 1
+     disabled 0
+     priority 10
      position 0.87 0.022
      size 0.09 0.045
      hexactpos 0
@@ -128,6 +159,9 @@ FrameWidgetClass GMapRoot {
      vexactsize 0
      {
       ImageWidgetClass CollapseSidebarBackground {
+       visible 1
+       disabled 0
+       priority 0
        position 0 0
        size 1 1
        hexactpos 0
@@ -143,6 +177,9 @@ FrameWidgetClass GMapRoot {
        filter 1
       }
       ButtonWidgetClass CollapseSidebar {
+       visible 1
+       disabled 0
+       priority 20
        position 0 0
        size 1 1
        hexactpos 0
@@ -163,6 +200,10 @@ FrameWidgetClass GMapRoot {
      }
     }
     ScrollWidgetClass SectionsScroll {
+     visible 1
+     disabled 0
+     priority 10
+     clipchildren 1
      position 0.035 0.125
      size 0.93 0.64
      hexactpos 0
@@ -175,6 +216,9 @@ FrameWidgetClass GMapRoot {
      "Ignore invisible" 1
      {
       GridSpacerWidgetClass SectionsStack {
+       visible 1
+       disabled 0
+       priority 10
        position 0 0
        size 1 0
        hexactpos 0
@@ -193,6 +237,9 @@ FrameWidgetClass GMapRoot {
        Rows 500
        {
         FrameWidgetClass ServerHeader {
+         visible 1
+         disabled 0
+         priority 10
          position 0 0
          size 1 55
          hexactpos 0
@@ -201,6 +248,9 @@ FrameWidgetClass GMapRoot {
          vexactsize 1
          {
           ImageWidgetClass ServerHeaderBackground {
+           visible 1
+           disabled 0
+           priority 0
            position 0 0
            size 1 1
            hexactpos 0
@@ -216,6 +266,9 @@ FrameWidgetClass GMapRoot {
            filter 1
           }
           ImageWidgetClass ServerHeaderIcon {
+           visible 1
+           disabled 0
+           priority 5
            position 0.045 0.2
            size 0.09 0.6
            hexactpos 0
@@ -231,6 +284,9 @@ FrameWidgetClass GMapRoot {
            filter 1
           }
           TextWidgetClass ServerHeaderTitle {
+           visible 1
+           disabled 0
+           priority 10
            position 0.18 0
            size 0.65 1
            hexactpos 0
@@ -250,6 +306,9 @@ FrameWidgetClass GMapRoot {
            "size to text v" 0
           }
           TextWidgetClass ServerCount {
+           visible 1
+           disabled 0
+           priority 10
            position 0.82 0
            size 0.08 1
            hexactpos 0
@@ -269,6 +328,9 @@ FrameWidgetClass GMapRoot {
            "size to text v" 0
           }
           ButtonWidgetClass ToggleServer {
+           visible 1
+           disabled 0
+           priority 20
            position 0 0
            size 1 1
            hexactpos 0
@@ -280,6 +342,9 @@ FrameWidgetClass GMapRoot {
            "no focus" 1
           }
           TextWidgetClass ServerChevron {
+           visible 1
+           disabled 0
+           priority 10
            position 0.91 0
            size 0.06 1
            hexactpos 0
@@ -301,6 +366,9 @@ FrameWidgetClass GMapRoot {
          }
         }
         GridSpacerWidgetClass ServerRows {
+         visible 1
+         disabled 0
+         priority 10
          position 0 0
          size 1 0
          hexactpos 0
@@ -319,6 +387,9 @@ FrameWidgetClass GMapRoot {
          Rows 500
         }
         FrameWidgetClass ZonesHeader {
+         visible 1
+         disabled 0
+         priority 10
          position 0 0
          size 1 55
          hexactpos 0
@@ -327,6 +398,9 @@ FrameWidgetClass GMapRoot {
          vexactsize 1
          {
           ImageWidgetClass ZonesHeaderBackground {
+           visible 1
+           disabled 0
+           priority 0
            position 0 0
            size 1 1
            hexactpos 0
@@ -342,6 +416,9 @@ FrameWidgetClass GMapRoot {
            filter 1
           }
           ImageWidgetClass ZonesHeaderIcon {
+           visible 1
+           disabled 0
+           priority 5
            position 0.045 0.2
            size 0.09 0.6
            hexactpos 0
@@ -357,6 +434,9 @@ FrameWidgetClass GMapRoot {
            filter 1
           }
           TextWidgetClass ZonesHeaderTitle {
+           visible 1
+           disabled 0
+           priority 10
            position 0.18 0
            size 0.65 1
            hexactpos 0
@@ -376,6 +456,9 @@ FrameWidgetClass GMapRoot {
            "size to text v" 0
           }
           TextWidgetClass ZoneCount {
+           visible 1
+           disabled 0
+           priority 10
            position 0.82 0
            size 0.08 1
            hexactpos 0
@@ -395,6 +478,9 @@ FrameWidgetClass GMapRoot {
            "size to text v" 0
           }
           ButtonWidgetClass ToggleZones {
+           visible 1
+           disabled 0
+           priority 20
            position 0 0
            size 1 1
            hexactpos 0
@@ -406,6 +492,9 @@ FrameWidgetClass GMapRoot {
            "no focus" 1
           }
           TextWidgetClass ZonesChevron {
+           visible 1
+           disabled 0
+           priority 10
            position 0.91 0
            size 0.06 1
            hexactpos 0
@@ -427,6 +516,9 @@ FrameWidgetClass GMapRoot {
          }
         }
         GridSpacerWidgetClass ZoneRows {
+         visible 1
+         disabled 0
+         priority 10
          position 0 0
          size 1 0
          hexactpos 0
@@ -445,6 +537,9 @@ FrameWidgetClass GMapRoot {
          Rows 500
         }
         FrameWidgetClass BuildHeader {
+         visible 1
+         disabled 0
+         priority 10
          position 0 0
          size 1 55
          hexactpos 0
@@ -453,6 +548,9 @@ FrameWidgetClass GMapRoot {
          vexactsize 1
          {
           ImageWidgetClass BuildHeaderBackground {
+           visible 1
+           disabled 0
+           priority 0
            position 0 0
            size 1 1
            hexactpos 0
@@ -468,6 +566,9 @@ FrameWidgetClass GMapRoot {
            filter 1
           }
           ImageWidgetClass BuildHeaderIcon {
+           visible 1
+           disabled 0
+           priority 5
            position 0.045 0.2
            size 0.09 0.6
            hexactpos 0
@@ -483,6 +584,9 @@ FrameWidgetClass GMapRoot {
            filter 1
           }
           TextWidgetClass BuildHeaderTitle {
+           visible 1
+           disabled 0
+           priority 10
            position 0.18 0
            size 0.65 1
            hexactpos 0
@@ -502,6 +606,9 @@ FrameWidgetClass GMapRoot {
            "size to text v" 0
           }
           TextWidgetClass BuildCount {
+           visible 1
+           disabled 0
+           priority 10
            position 0.82 0
            size 0.08 1
            hexactpos 0
@@ -521,6 +628,9 @@ FrameWidgetClass GMapRoot {
            "size to text v" 0
           }
           ButtonWidgetClass ToggleBuild {
+           visible 1
+           disabled 0
+           priority 20
            position 0 0
            size 1 1
            hexactpos 0
@@ -532,6 +642,9 @@ FrameWidgetClass GMapRoot {
            "no focus" 1
           }
           TextWidgetClass BuildChevron {
+           visible 1
+           disabled 0
+           priority 10
            position 0.91 0
            size 0.06 1
            hexactpos 0
@@ -553,6 +666,9 @@ FrameWidgetClass GMapRoot {
          }
         }
         GridSpacerWidgetClass BuildRows {
+         visible 1
+         disabled 0
+         priority 10
          position 0 0
          size 1 0
          hexactpos 0
@@ -571,6 +687,9 @@ FrameWidgetClass GMapRoot {
          Rows 500
         }
         FrameWidgetClass PersonalHeader {
+         visible 1
+         disabled 0
+         priority 10
          position 0 0
          size 1 55
          hexactpos 0
@@ -579,6 +698,9 @@ FrameWidgetClass GMapRoot {
          vexactsize 1
          {
           ImageWidgetClass PersonalHeaderBackground {
+           visible 1
+           disabled 0
+           priority 0
            position 0 0
            size 1 1
            hexactpos 0
@@ -594,6 +716,9 @@ FrameWidgetClass GMapRoot {
            filter 1
           }
           ImageWidgetClass PersonalHeaderIcon {
+           visible 1
+           disabled 0
+           priority 5
            position 0.045 0.2
            size 0.09 0.6
            hexactpos 0
@@ -609,6 +734,9 @@ FrameWidgetClass GMapRoot {
            filter 1
           }
           TextWidgetClass PersonalHeaderTitle {
+           visible 1
+           disabled 0
+           priority 10
            position 0.18 0
            size 0.65 1
            hexactpos 0
@@ -628,6 +756,9 @@ FrameWidgetClass GMapRoot {
            "size to text v" 0
           }
           TextWidgetClass PersonalCount {
+           visible 1
+           disabled 0
+           priority 10
            position 0.82 0
            size 0.08 1
            hexactpos 0
@@ -647,6 +778,9 @@ FrameWidgetClass GMapRoot {
            "size to text v" 0
           }
           ButtonWidgetClass TogglePersonal {
+           visible 1
+           disabled 0
+           priority 20
            position 0 0
            size 1 1
            hexactpos 0
@@ -658,6 +792,9 @@ FrameWidgetClass GMapRoot {
            "no focus" 1
           }
           TextWidgetClass PersonalChevron {
+           visible 1
+           disabled 0
+           priority 10
            position 0.91 0
            size 0.06 1
            hexactpos 0
@@ -679,6 +816,9 @@ FrameWidgetClass GMapRoot {
          }
         }
         GridSpacerWidgetClass PersonalRows {
+         visible 1
+         disabled 0
+         priority 10
          position 0 0
          size 1 0
          hexactpos 0
@@ -697,6 +837,9 @@ FrameWidgetClass GMapRoot {
          Rows 500
         }
         FrameWidgetClass GroupHeader {
+         visible 1
+         disabled 0
+         priority 10
          position 0 0
          size 1 55
          hexactpos 0
@@ -705,6 +848,9 @@ FrameWidgetClass GMapRoot {
          vexactsize 1
          {
           ImageWidgetClass GroupHeaderBackground {
+           visible 1
+           disabled 0
+           priority 0
            position 0 0
            size 1 1
            hexactpos 0
@@ -720,6 +866,9 @@ FrameWidgetClass GMapRoot {
            filter 1
           }
           ImageWidgetClass GroupHeaderIcon {
+           visible 1
+           disabled 0
+           priority 5
            position 0.045 0.2
            size 0.09 0.6
            hexactpos 0
@@ -735,6 +884,9 @@ FrameWidgetClass GMapRoot {
            filter 1
           }
           TextWidgetClass GroupHeaderTitle {
+           visible 1
+           disabled 0
+           priority 10
            position 0.18 0
            size 0.65 1
            hexactpos 0
@@ -754,6 +906,9 @@ FrameWidgetClass GMapRoot {
            "size to text v" 0
           }
           TextWidgetClass GroupCount {
+           visible 1
+           disabled 0
+           priority 10
            position 0.82 0
            size 0.08 1
            hexactpos 0
@@ -773,6 +928,9 @@ FrameWidgetClass GMapRoot {
            "size to text v" 0
           }
           ButtonWidgetClass ToggleGroup {
+           visible 1
+           disabled 0
+           priority 20
            position 0 0
            size 1 1
            hexactpos 0
@@ -784,6 +942,9 @@ FrameWidgetClass GMapRoot {
            "no focus" 1
           }
           TextWidgetClass GroupChevron {
+           visible 1
+           disabled 0
+           priority 10
            position 0.91 0
            size 0.06 1
            hexactpos 0
@@ -805,6 +966,9 @@ FrameWidgetClass GMapRoot {
          }
         }
         GridSpacerWidgetClass GroupRows {
+         visible 1
+         disabled 0
+         priority 10
          position 0 0
          size 1 0
          hexactpos 0
@@ -827,6 +991,9 @@ FrameWidgetClass GMapRoot {
      }
     }
     FrameWidgetClass CreateMarkerFrame {
+     visible 1
+     disabled 0
+     priority 10
      position 0.065 0.785
      size 0.87 0.055
      hexactpos 0
@@ -835,6 +1002,9 @@ FrameWidgetClass GMapRoot {
      vexactsize 0
      {
       ImageWidgetClass CreateMarkerBackground {
+       visible 1
+       disabled 0
+       priority 0
        position 0 0
        size 1 1
        hexactpos 0
@@ -850,6 +1020,9 @@ FrameWidgetClass GMapRoot {
        filter 1
       }
       ButtonWidgetClass CreateMarker {
+       visible 1
+       disabled 0
+       priority 20
        position 0 0
        size 1 1
        hexactpos 0
@@ -870,6 +1043,9 @@ FrameWidgetClass GMapRoot {
      }
     }
     TextWidgetClass Status {
+     visible 1
+     disabled 0
+     priority 10
      position 0.07 0.846
      size 0.86 0.035
      hexactpos 0
@@ -889,6 +1065,9 @@ FrameWidgetClass GMapRoot {
      "size to text v" 0
     }
     FrameWidgetClass OpenGroupsFrame {
+     visible 1
+     disabled 0
+     priority 10
      position 0.065 0.895
      size 0.27 0.075
      hexactpos 0
@@ -897,6 +1076,9 @@ FrameWidgetClass GMapRoot {
      vexactsize 0
      {
       ImageWidgetClass OpenGroupsBackground {
+       visible 1
+       disabled 0
+       priority 0
        position 0.22 0
        size 0.56 0.7
        hexactpos 0
@@ -912,6 +1094,9 @@ FrameWidgetClass GMapRoot {
        filter 1
       }
       ImageWidgetClass OpenGroupsIcon {
+       visible 1
+       disabled 0
+       priority 5
        position 0.36 0.1
        size 0.28 0.4
        hexactpos 0
@@ -927,6 +1112,9 @@ FrameWidgetClass GMapRoot {
        filter 1
       }
       TextWidgetClass OpenGroupsLabel {
+       visible 1
+       disabled 0
+       priority 10
        position 0 0.75
        size 1 0.25
        hexactpos 0
@@ -946,6 +1134,9 @@ FrameWidgetClass GMapRoot {
        "size to text v" 0
       }
       ButtonWidgetClass OpenGroups {
+       visible 1
+       disabled 0
+       priority 20
        position 0 0
        size 1 1
        hexactpos 0
@@ -959,6 +1150,9 @@ FrameWidgetClass GMapRoot {
      }
     }
     FrameWidgetClass OpenSettingsFrame {
+     visible 1
+     disabled 0
+     priority 10
      position 0.365 0.895
      size 0.27 0.075
      hexactpos 0
@@ -967,6 +1161,9 @@ FrameWidgetClass GMapRoot {
      vexactsize 0
      {
       ImageWidgetClass OpenSettingsBackground {
+       visible 1
+       disabled 0
+       priority 0
        position 0.22 0
        size 0.56 0.7
        hexactpos 0
@@ -982,6 +1179,9 @@ FrameWidgetClass GMapRoot {
        filter 1
       }
       ImageWidgetClass OpenSettingsIcon {
+       visible 1
+       disabled 0
+       priority 5
        position 0.36 0.1
        size 0.28 0.4
        hexactpos 0
@@ -997,6 +1197,9 @@ FrameWidgetClass GMapRoot {
        filter 1
       }
       TextWidgetClass OpenSettingsLabel {
+       visible 1
+       disabled 0
+       priority 10
        position 0 0.75
        size 1 0.25
        hexactpos 0
@@ -1016,6 +1219,9 @@ FrameWidgetClass GMapRoot {
        "size to text v" 0
       }
       ButtonWidgetClass OpenSettings {
+       visible 1
+       disabled 0
+       priority 20
        position 0 0
        size 1 1
        hexactpos 0
@@ -1029,6 +1235,9 @@ FrameWidgetClass GMapRoot {
      }
     }
     FrameWidgetClass CloseMapFrame {
+     visible 1
+     disabled 0
+     priority 10
      position 0.665 0.895
      size 0.27 0.075
      hexactpos 0
@@ -1037,6 +1246,9 @@ FrameWidgetClass GMapRoot {
      vexactsize 0
      {
       ImageWidgetClass CloseMapBackground {
+       visible 1
+       disabled 0
+       priority 0
        position 0.22 0
        size 0.56 0.7
        hexactpos 0
@@ -1052,6 +1264,9 @@ FrameWidgetClass GMapRoot {
        filter 1
       }
       ImageWidgetClass CloseMapIcon {
+       visible 1
+       disabled 0
+       priority 5
        position 0.36 0.1
        size 0.28 0.4
        hexactpos 0
@@ -1067,6 +1282,9 @@ FrameWidgetClass GMapRoot {
        filter 1
       }
       TextWidgetClass CloseMapLabel {
+       visible 1
+       disabled 0
+       priority 10
        position 0 0.75
        size 1 0.25
        hexactpos 0
@@ -1086,6 +1304,9 @@ FrameWidgetClass GMapRoot {
        "size to text v" 0
       }
       ButtonWidgetClass CloseMap {
+       visible 1
+       disabled 0
+       priority 20
        position 0 0
        size 1 1
        hexactpos 0
@@ -1099,6 +1320,9 @@ FrameWidgetClass GMapRoot {
      }
     }
     TextWidgetClass Brand {
+     visible 1
+     disabled 0
+     priority 10
      position 0.07 0.972
      size 0.86 0.018
      hexactpos 0
@@ -1120,6 +1344,8 @@ FrameWidgetClass GMapRoot {
    }
   }
   FrameWidgetClass ExpandSidebarFrame {
+   disabled 0
+   priority 100
  visible 0
    position 0.015 0.025
    size 0.105 0.055
@@ -1129,6 +1355,9 @@ FrameWidgetClass GMapRoot {
    vexactsize 0
    {
     ImageWidgetClass ExpandSidebarBackground {
+     visible 1
+     disabled 0
+     priority 0
      position 0 0
      size 1 1
      hexactpos 0
@@ -1144,6 +1373,9 @@ FrameWidgetClass GMapRoot {
      filter 1
     }
     ButtonWidgetClass ExpandSidebar {
+     visible 1
+     disabled 0
+     priority 20
      position 0 0
      size 1 1
      hexactpos 0
@@ -1164,6 +1396,9 @@ FrameWidgetClass GMapRoot {
    }
   }
   FrameWidgetClass WorldBadge {
+   visible 1
+   disabled 0
+   priority 110
    position 0.277 0.025
    size 0.15 0.055
    hexactpos 0
@@ -1172,6 +1407,9 @@ FrameWidgetClass GMapRoot {
    vexactsize 0
    {
     ImageWidgetClass WorldBadgeBackground {
+     visible 1
+     disabled 0
+     priority 0
      position 0 0
      size 1 1
      hexactpos 0
@@ -1187,6 +1425,9 @@ FrameWidgetClass GMapRoot {
      filter 1
     }
     TextWidgetClass WorldLabel {
+     visible 1
+     disabled 0
+     priority 10
      position 0.07 0
      size 0.86 1
      hexactpos 0
@@ -1208,6 +1449,9 @@ FrameWidgetClass GMapRoot {
    }
   }
   FrameWidgetClass Compass {
+   visible 1
+   disabled 0
+   priority 110
    position 0.938 0.025
    size 0.045 0.08
    hexactpos 0
@@ -1216,6 +1460,9 @@ FrameWidgetClass GMapRoot {
    vexactsize 0
    {
     ImageWidgetClass CompassImage {
+     visible 1
+     disabled 0
+     priority 5
      position 0 0
      size 1 1
      hexactpos 0
@@ -1233,6 +1480,9 @@ FrameWidgetClass GMapRoot {
    }
   }
   FrameWidgetClass InfoCard {
+   visible 1
+   disabled 0
+   priority 110
    position 0.792 0.675
    size 0.195 0.3
    hexactpos 0
@@ -1241,6 +1491,9 @@ FrameWidgetClass GMapRoot {
    vexactsize 0
    {
     ImageWidgetClass InfoCardBackground {
+     visible 1
+     disabled 0
+     priority 0
      position 0 0
      size 1 1
      hexactpos 0
@@ -1256,6 +1509,9 @@ FrameWidgetClass GMapRoot {
      filter 1
     }
     TextWidgetClass Coordinates {
+     visible 1
+     disabled 0
+     priority 10
      position 0.09 0.045
      size 0.66 0.12
      hexactpos 0
@@ -1275,6 +1531,9 @@ FrameWidgetClass GMapRoot {
      "size to text v" 0
     }
     FrameWidgetClass CenterPlayerFrame {
+     visible 1
+     disabled 0
+     priority 10
      position 0.79 0.045
      size 0.14 0.12
      hexactpos 0
@@ -1283,6 +1542,9 @@ FrameWidgetClass GMapRoot {
      vexactsize 0
      {
       ImageWidgetClass CenterPlayerBackground {
+       visible 1
+       disabled 0
+       priority 0
        position 0 0
        size 1 1
        hexactpos 0
@@ -1298,6 +1560,9 @@ FrameWidgetClass GMapRoot {
        filter 1
       }
       ButtonWidgetClass CenterPlayer {
+       visible 1
+       disabled 0
+       priority 20
        position 0 0
        size 1 1
        hexactpos 0
@@ -1318,6 +1583,9 @@ FrameWidgetClass GMapRoot {
      }
     }
     TextWidgetClass InfoDivider {
+     visible 1
+     disabled 0
+     priority 10
      position 0.09 0.17
      size 0.82 0.045
      hexactpos 0
@@ -1337,6 +1605,9 @@ FrameWidgetClass GMapRoot {
      "size to text v" 0
     }
     TextWidgetClass HintCreate {
+     visible 1
+     disabled 0
+     priority 10
      position 0.09 0.22
      size 0.85 0.1
      hexactpos 0
@@ -1356,6 +1627,9 @@ FrameWidgetClass GMapRoot {
      "size to text v" 0
     }
     TextWidgetClass HintSelect {
+     visible 1
+     disabled 0
+     priority 10
      position 0.09 0.33
      size 0.85 0.1
      hexactpos 0
@@ -1375,6 +1649,9 @@ FrameWidgetClass GMapRoot {
      "size to text v" 0
     }
     TextWidgetClass HintDrag {
+     visible 1
+     disabled 0
+     priority 10
      position 0.09 0.44
      size 0.87 0.1
      hexactpos 0
@@ -1394,6 +1671,9 @@ FrameWidgetClass GMapRoot {
      "size to text v" 0
     }
     TextWidgetClass HintZoom {
+     visible 1
+     disabled 0
+     priority 10
      position 0.09 0.55
      size 0.86 0.1
      hexactpos 0
@@ -1413,6 +1693,9 @@ FrameWidgetClass GMapRoot {
      "size to text v" 0
     }
     TextWidgetClass HintRuler {
+     visible 1
+     disabled 0
+     priority 10
      position 0.09 0.66
      size 0.85 0.1
      hexactpos 0
@@ -1432,6 +1715,9 @@ FrameWidgetClass GMapRoot {
      "size to text v" 0
     }
     TextWidgetClass HintCopy {
+     visible 1
+     disabled 0
+     priority 10
      position 0.09 0.77
      size 0.85 0.1
      hexactpos 0
@@ -1451,6 +1737,9 @@ FrameWidgetClass GMapRoot {
      "size to text v" 0
     }
     TextWidgetClass ScaleText {
+     visible 1
+     disabled 0
+     priority 10
      position 0.09 0.89
      size 0.85 0.07
      hexactpos 0
@@ -1472,6 +1761,8 @@ FrameWidgetClass GMapRoot {
    }
   }
   FrameWidgetClass Editor {
+   disabled 0
+   priority 300
    position 0 0
    size 1 1
    hexactpos 0
@@ -1482,6 +1773,9 @@ FrameWidgetClass GMapRoot {
    ignorepointer 0
    {
     PanelWidgetClass EditorDim {
+     visible 1
+     disabled 0
+     priority 0
      position 0 0
      size 1 1
      hexactpos 0
@@ -1493,6 +1787,9 @@ FrameWidgetClass GMapRoot {
      style rover_sim_black_2
     }
     FrameWidgetClass EditorPanel {
+     visible 1
+     disabled 0
+     priority 10
      position 0.32999999999999996 0.195
      size 0.34 0.61
      hexactpos 0
@@ -1501,6 +1798,9 @@ FrameWidgetClass GMapRoot {
      vexactsize 0
      {
       ImageWidgetClass EditorBackground {
+       visible 1
+       disabled 0
+       priority 0
        position 0 0
        size 1 1
        hexactpos 0
@@ -1516,6 +1816,9 @@ FrameWidgetClass GMapRoot {
        filter 1
       }
       TextWidgetClass EditorTitle {
+       visible 1
+       disabled 0
+       priority 10
        position 0.07 0.045
        size 0.85 0.075
        hexactpos 0
@@ -1535,6 +1838,9 @@ FrameWidgetClass GMapRoot {
        "size to text v" 0
       }
       TextWidgetClass EditorNameLabel {
+       visible 1
+       disabled 0
+       priority 10
        position 0.075 0.16
        size 0.85 0.045
        hexactpos 0
@@ -1554,6 +1860,9 @@ FrameWidgetClass GMapRoot {
        "size to text v" 0
       }
       EditBoxWidgetClass EditorName {
+       visible 1
+       disabled 0
+       priority 20
        position 0.075 0.215
        size 0.85 0.075
        hexactpos 0
@@ -1571,6 +1880,9 @@ FrameWidgetClass GMapRoot {
        "Use default text" 0
       }
       TextWidgetClass EditorCoordsLabel {
+       visible 1
+       disabled 0
+       priority 10
        position 0.075 0.32
        size 0.85 0.045
        hexactpos 0
@@ -1590,6 +1902,9 @@ FrameWidgetClass GMapRoot {
        "size to text v" 0
       }
       EditBoxWidgetClass EditorX {
+       visible 1
+       disabled 0
+       priority 20
        position 0.075 0.375
        size 0.4 0.075
        hexactpos 0
@@ -1607,6 +1922,9 @@ FrameWidgetClass GMapRoot {
        "Use default text" 0
       }
       EditBoxWidgetClass EditorZ {
+       visible 1
+       disabled 0
+       priority 20
        position 0.525 0.375
        size 0.4 0.075
        hexactpos 0
@@ -1624,6 +1942,9 @@ FrameWidgetClass GMapRoot {
        "Use default text" 0
       }
       FrameWidgetClass EditorScopeFrame {
+       visible 1
+       disabled 0
+       priority 10
        position 0.075 0.5
        size 0.85 0.075
        hexactpos 0
@@ -1632,6 +1953,9 @@ FrameWidgetClass GMapRoot {
        vexactsize 0
        {
         ImageWidgetClass EditorScopeBackground {
+         visible 1
+         disabled 0
+         priority 0
          position 0 0
          size 1 1
          hexactpos 0
@@ -1647,6 +1971,9 @@ FrameWidgetClass GMapRoot {
          filter 1
         }
         ButtonWidgetClass EditorScope {
+         visible 1
+         disabled 0
+         priority 20
          position 0 0
          size 1 1
          hexactpos 0
@@ -1667,6 +1994,9 @@ FrameWidgetClass GMapRoot {
        }
       }
       FrameWidgetClass EditorIconFrame {
+       visible 1
+       disabled 0
+       priority 10
        position 0.075 0.6
        size 0.4 0.075
        hexactpos 0
@@ -1675,6 +2005,9 @@ FrameWidgetClass GMapRoot {
        vexactsize 0
        {
         ImageWidgetClass EditorIconBackground {
+         visible 1
+         disabled 0
+         priority 0
          position 0 0
          size 1 1
          hexactpos 0
@@ -1690,6 +2023,9 @@ FrameWidgetClass GMapRoot {
          filter 1
         }
         ButtonWidgetClass EditorIcon {
+         visible 1
+         disabled 0
+         priority 20
          position 0 0
          size 1 1
          hexactpos 0
@@ -1710,6 +2046,9 @@ FrameWidgetClass GMapRoot {
        }
       }
       FrameWidgetClass EditorColorFrame {
+       visible 1
+       disabled 0
+       priority 10
        position 0.525 0.6
        size 0.4 0.075
        hexactpos 0
@@ -1718,6 +2057,9 @@ FrameWidgetClass GMapRoot {
        vexactsize 0
        {
         ImageWidgetClass EditorColorBackground {
+         visible 1
+         disabled 0
+         priority 0
          position 0 0
          size 1 1
          hexactpos 0
@@ -1733,6 +2075,9 @@ FrameWidgetClass GMapRoot {
          filter 1
         }
         ButtonWidgetClass EditorColor {
+         visible 1
+         disabled 0
+         priority 20
          position 0 0
          size 1 1
          hexactpos 0
@@ -1753,6 +2098,9 @@ FrameWidgetClass GMapRoot {
        }
       }
       TextWidgetClass EditorError {
+       visible 1
+       disabled 0
+       priority 10
        position 0.075 0.7
        size 0.85 0.055
        hexactpos 0
@@ -1772,6 +2120,9 @@ FrameWidgetClass GMapRoot {
        "size to text v" 0
       }
       FrameWidgetClass EditorDeleteFrame {
+       visible 1
+       disabled 0
+       priority 10
        position 0.075 0.79
        size 0.25 0.09
        hexactpos 0
@@ -1780,6 +2131,9 @@ FrameWidgetClass GMapRoot {
        vexactsize 0
        {
         ImageWidgetClass EditorDeleteBackground {
+         visible 1
+         disabled 0
+         priority 0
          position 0 0
          size 1 1
          hexactpos 0
@@ -1795,6 +2149,9 @@ FrameWidgetClass GMapRoot {
          filter 1
         }
         ButtonWidgetClass EditorDelete {
+         visible 1
+         disabled 0
+         priority 20
          position 0 0
          size 1 1
          hexactpos 0
@@ -1815,6 +2172,9 @@ FrameWidgetClass GMapRoot {
        }
       }
       FrameWidgetClass EditorCancelFrame {
+       visible 1
+       disabled 0
+       priority 10
        position 0.35 0.79
        size 0.25 0.09
        hexactpos 0
@@ -1823,6 +2183,9 @@ FrameWidgetClass GMapRoot {
        vexactsize 0
        {
         ImageWidgetClass EditorCancelBackground {
+         visible 1
+         disabled 0
+         priority 0
          position 0 0
          size 1 1
          hexactpos 0
@@ -1838,6 +2201,9 @@ FrameWidgetClass GMapRoot {
          filter 1
         }
         ButtonWidgetClass EditorCancel {
+         visible 1
+         disabled 0
+         priority 20
          position 0 0
          size 1 1
          hexactpos 0
@@ -1858,6 +2224,9 @@ FrameWidgetClass GMapRoot {
        }
       }
       FrameWidgetClass EditorSaveFrame {
+       visible 1
+       disabled 0
+       priority 10
        position 0.625 0.79
        size 0.3 0.09
        hexactpos 0
@@ -1866,6 +2235,9 @@ FrameWidgetClass GMapRoot {
        vexactsize 0
        {
         ImageWidgetClass EditorSaveBackground {
+         visible 1
+         disabled 0
+         priority 0
          position 0 0
          size 1 1
          hexactpos 0
@@ -1881,6 +2253,9 @@ FrameWidgetClass GMapRoot {
          filter 1
         }
         ButtonWidgetClass EditorSave {
+         visible 1
+         disabled 0
+         priority 20
          position 0 0
          size 1 1
          hexactpos 0
@@ -1905,6 +2280,8 @@ FrameWidgetClass GMapRoot {
    }
   }
   FrameWidgetClass Groups {
+   disabled 0
+   priority 300
    position 0 0
    size 1 1
    hexactpos 0
@@ -1915,6 +2292,9 @@ FrameWidgetClass GMapRoot {
    ignorepointer 0
    {
     PanelWidgetClass GroupsDim {
+     visible 1
+     disabled 0
+     priority 0
      position 0 0
      size 1 1
      hexactpos 0
@@ -1926,6 +2306,9 @@ FrameWidgetClass GMapRoot {
      style rover_sim_black_2
     }
     FrameWidgetClass GroupsPanel {
+     visible 1
+     disabled 0
+     priority 10
      position 0.28500000000000003 0.09000000000000002
      size 0.43 0.82
      hexactpos 0
@@ -1934,6 +2317,9 @@ FrameWidgetClass GMapRoot {
      vexactsize 0
      {
       ImageWidgetClass GroupsBackground {
+       visible 1
+       disabled 0
+       priority 0
        position 0 0
        size 1 1
        hexactpos 0
@@ -1949,6 +2335,9 @@ FrameWidgetClass GMapRoot {
        filter 1
       }
       TextWidgetClass GroupsTitle {
+       visible 1
+       disabled 0
+       priority 10
        position 0.06 0.035
        size 0.86 0.06
        hexactpos 0
@@ -1968,6 +2357,9 @@ FrameWidgetClass GMapRoot {
        "size to text v" 0
       }
       MultilineTextWidgetClass GroupInfo {
+       visible 1
+       disabled 0
+       priority 10
        position 0.06 0.11
        size 0.88 0.11
        hexactpos 0
@@ -1986,6 +2378,9 @@ FrameWidgetClass GMapRoot {
        "size to text v" 0
       }
       EditBoxWidgetClass GroupNameInput {
+       visible 1
+       disabled 0
+       priority 20
        position 0.06 0.245
        size 0.59 0.055
        hexactpos 0
@@ -2003,6 +2398,9 @@ FrameWidgetClass GMapRoot {
        "Use default text" 0
       }
       FrameWidgetClass GroupCreateFrame {
+       visible 1
+       disabled 0
+       priority 10
        position 0.68 0.245
        size 0.26 0.055
        hexactpos 0
@@ -2011,6 +2409,9 @@ FrameWidgetClass GMapRoot {
        vexactsize 0
        {
         ImageWidgetClass GroupCreateBackground {
+         visible 1
+         disabled 0
+         priority 0
          position 0 0
          size 1 1
          hexactpos 0
@@ -2026,6 +2427,9 @@ FrameWidgetClass GMapRoot {
          filter 1
         }
         ButtonWidgetClass GroupCreate {
+         visible 1
+         disabled 0
+         priority 20
          position 0 0
          size 1 1
          hexactpos 0
@@ -2046,6 +2450,9 @@ FrameWidgetClass GMapRoot {
        }
       }
       TextWidgetClass GroupInviteLabel {
+       visible 1
+       disabled 0
+       priority 10
        position 0.06 0.325
        size 0.88 0.035
        hexactpos 0
@@ -2065,6 +2472,9 @@ FrameWidgetClass GMapRoot {
        "size to text v" 0
       }
       FrameWidgetClass GroupPickPlayerFrame {
+       visible 1
+       disabled 0
+       priority 10
        position 0.06 0.37
        size 0.59 0.055
        hexactpos 0
@@ -2073,6 +2483,9 @@ FrameWidgetClass GMapRoot {
        vexactsize 0
        {
         ImageWidgetClass GroupPickPlayerBackground {
+         visible 1
+         disabled 0
+         priority 0
          position 0 0
          size 1 1
          hexactpos 0
@@ -2088,6 +2501,9 @@ FrameWidgetClass GMapRoot {
          filter 1
         }
         ButtonWidgetClass GroupPickPlayer {
+         visible 1
+         disabled 0
+         priority 20
          position 0 0
          size 1 1
          hexactpos 0
@@ -2108,6 +2524,9 @@ FrameWidgetClass GMapRoot {
        }
       }
       FrameWidgetClass GroupInviteFrame {
+       visible 1
+       disabled 0
+       priority 10
        position 0.68 0.37
        size 0.26 0.055
        hexactpos 0
@@ -2116,6 +2535,9 @@ FrameWidgetClass GMapRoot {
        vexactsize 0
        {
         ImageWidgetClass GroupInviteBackground {
+         visible 1
+         disabled 0
+         priority 0
          position 0 0
          size 1 1
          hexactpos 0
@@ -2131,6 +2553,9 @@ FrameWidgetClass GMapRoot {
          filter 1
         }
         ButtonWidgetClass GroupInvite {
+         visible 1
+         disabled 0
+         priority 20
          position 0 0
          size 1 1
          hexactpos 0
@@ -2151,6 +2576,9 @@ FrameWidgetClass GMapRoot {
        }
       }
       MultilineTextWidgetClass GroupInvitations {
+       visible 1
+       disabled 0
+       priority 10
        position 0.06 0.46
        size 0.57 0.08
        hexactpos 0
@@ -2169,6 +2597,9 @@ FrameWidgetClass GMapRoot {
        "size to text v" 0
       }
       FrameWidgetClass GroupAcceptFrame {
+       visible 1
+       disabled 0
+       priority 10
        position 0.65 0.46
        size 0.29 0.045
        hexactpos 0
@@ -2177,6 +2608,9 @@ FrameWidgetClass GMapRoot {
        vexactsize 0
        {
         ImageWidgetClass GroupAcceptBackground {
+         visible 1
+         disabled 0
+         priority 0
          position 0 0
          size 1 1
          hexactpos 0
@@ -2192,6 +2626,9 @@ FrameWidgetClass GMapRoot {
          filter 1
         }
         ButtonWidgetClass GroupAccept {
+         visible 1
+         disabled 0
+         priority 20
          position 0 0
          size 1 1
          hexactpos 0
@@ -2212,6 +2649,9 @@ FrameWidgetClass GMapRoot {
        }
       }
       FrameWidgetClass GroupDeclineFrame {
+       visible 1
+       disabled 0
+       priority 10
        position 0.65 0.515
        size 0.29 0.045
        hexactpos 0
@@ -2220,6 +2660,9 @@ FrameWidgetClass GMapRoot {
        vexactsize 0
        {
         ImageWidgetClass GroupDeclineBackground {
+         visible 1
+         disabled 0
+         priority 0
          position 0 0
          size 1 1
          hexactpos 0
@@ -2235,6 +2678,9 @@ FrameWidgetClass GMapRoot {
          filter 1
         }
         ButtonWidgetClass GroupDecline {
+         visible 1
+         disabled 0
+         priority 20
          position 0 0
          size 1 1
          hexactpos 0
@@ -2255,6 +2701,9 @@ FrameWidgetClass GMapRoot {
        }
       }
       TextWidgetClass GroupPlayersLabel {
+       visible 1
+       disabled 0
+       priority 10
        position 0.06 0.57
        size 0.88 0.035
        hexactpos 0
@@ -2274,6 +2723,9 @@ FrameWidgetClass GMapRoot {
        "size to text v" 0
       }
       MultilineTextWidgetClass GroupPlayers {
+       visible 1
+       disabled 0
+       priority 10
        position 0.06 0.62
        size 0.88 0.2
        hexactpos 0
@@ -2292,6 +2744,9 @@ FrameWidgetClass GMapRoot {
        "size to text v" 0
       }
       FrameWidgetClass GroupLeaveFrame {
+       visible 1
+       disabled 0
+       priority 10
        position 0.06 0.875
        size 0.43 0.065
        hexactpos 0
@@ -2300,6 +2755,9 @@ FrameWidgetClass GMapRoot {
        vexactsize 0
        {
         ImageWidgetClass GroupLeaveBackground {
+         visible 1
+         disabled 0
+         priority 0
          position 0 0
          size 1 1
          hexactpos 0
@@ -2315,6 +2773,9 @@ FrameWidgetClass GMapRoot {
          filter 1
         }
         ButtonWidgetClass GroupLeave {
+         visible 1
+         disabled 0
+         priority 20
          position 0 0
          size 1 1
          hexactpos 0
@@ -2335,6 +2796,9 @@ FrameWidgetClass GMapRoot {
        }
       }
       FrameWidgetClass GroupCloseFrame {
+       visible 1
+       disabled 0
+       priority 10
        position 0.52 0.875
        size 0.42 0.065
        hexactpos 0
@@ -2343,6 +2807,9 @@ FrameWidgetClass GMapRoot {
        vexactsize 0
        {
         ImageWidgetClass GroupCloseBackground {
+         visible 1
+         disabled 0
+         priority 0
          position 0 0
          size 1 1
          hexactpos 0
@@ -2358,6 +2825,9 @@ FrameWidgetClass GMapRoot {
          filter 1
         }
         ButtonWidgetClass GroupClose {
+         visible 1
+         disabled 0
+         priority 20
          position 0 0
          size 1 1
          hexactpos 0
@@ -2382,6 +2852,8 @@ FrameWidgetClass GMapRoot {
    }
   }
   FrameWidgetClass Settings {
+   disabled 0
+   priority 300
    position 0 0
    size 1 1
    hexactpos 0
@@ -2392,6 +2864,9 @@ FrameWidgetClass GMapRoot {
    ignorepointer 0
    {
     PanelWidgetClass SettingsDim {
+     visible 1
+     disabled 0
+     priority 0
      position 0 0
      size 1 1
      hexactpos 0
@@ -2403,6 +2878,9 @@ FrameWidgetClass GMapRoot {
      style rover_sim_black_2
     }
     FrameWidgetClass SettingsPanel {
+     visible 1
+     disabled 0
+     priority 10
      position 0.325 0.26
      size 0.35 0.48
      hexactpos 0
@@ -2411,6 +2889,9 @@ FrameWidgetClass GMapRoot {
      vexactsize 0
      {
       ImageWidgetClass SettingsBackground {
+       visible 1
+       disabled 0
+       priority 0
        position 0 0
        size 1 1
        hexactpos 0
@@ -2426,6 +2907,9 @@ FrameWidgetClass GMapRoot {
        filter 1
       }
       TextWidgetClass SettingsTitle {
+       visible 1
+       disabled 0
+       priority 10
        position 0.075 0.075
        size 0.85 0.1
        hexactpos 0
@@ -2445,6 +2929,9 @@ FrameWidgetClass GMapRoot {
        "size to text v" 0
       }
       FrameWidgetClass SettingsPlayerFrame {
+       visible 1
+       disabled 0
+       priority 10
        position 0.075 0.25
        size 0.85 0.12
        hexactpos 0
@@ -2453,6 +2940,9 @@ FrameWidgetClass GMapRoot {
        vexactsize 0
        {
         ImageWidgetClass SettingsPlayerBackground {
+         visible 1
+         disabled 0
+         priority 0
          position 0 0
          size 1 1
          hexactpos 0
@@ -2468,6 +2958,9 @@ FrameWidgetClass GMapRoot {
          filter 1
         }
         ButtonWidgetClass SettingsPlayer {
+         visible 1
+         disabled 0
+         priority 20
          position 0 0
          size 1 1
          hexactpos 0
@@ -2488,6 +2981,9 @@ FrameWidgetClass GMapRoot {
        }
       }
       FrameWidgetClass SettingsNamesFrame {
+       visible 1
+       disabled 0
+       priority 10
        position 0.075 0.4
        size 0.85 0.12
        hexactpos 0
@@ -2496,6 +2992,9 @@ FrameWidgetClass GMapRoot {
        vexactsize 0
        {
         ImageWidgetClass SettingsNamesBackground {
+         visible 1
+         disabled 0
+         priority 0
          position 0 0
          size 1 1
          hexactpos 0
@@ -2511,6 +3010,9 @@ FrameWidgetClass GMapRoot {
          filter 1
         }
         ButtonWidgetClass SettingsNames {
+         visible 1
+         disabled 0
+         priority 20
          position 0 0
          size 1 1
          hexactpos 0
@@ -2531,6 +3033,9 @@ FrameWidgetClass GMapRoot {
        }
       }
       FrameWidgetClass SettingsZonesFrame {
+       visible 1
+       disabled 0
+       priority 10
        position 0.075 0.55
        size 0.85 0.12
        hexactpos 0
@@ -2539,6 +3044,9 @@ FrameWidgetClass GMapRoot {
        vexactsize 0
        {
         ImageWidgetClass SettingsZonesBackground {
+         visible 1
+         disabled 0
+         priority 0
          position 0 0
          size 1 1
          hexactpos 0
@@ -2554,6 +3062,9 @@ FrameWidgetClass GMapRoot {
          filter 1
         }
         ButtonWidgetClass SettingsZones {
+         visible 1
+         disabled 0
+         priority 20
          position 0 0
          size 1 1
          hexactpos 0
@@ -2574,6 +3085,9 @@ FrameWidgetClass GMapRoot {
        }
       }
       FrameWidgetClass SettingsCloseFrame {
+       visible 1
+       disabled 0
+       priority 10
        position 0.075 0.77
        size 0.85 0.12
        hexactpos 0
@@ -2582,6 +3096,9 @@ FrameWidgetClass GMapRoot {
        vexactsize 0
        {
         ImageWidgetClass SettingsCloseBackground {
+         visible 1
+         disabled 0
+         priority 0
          position 0 0
          size 1 1
          hexactpos 0
@@ -2597,6 +3114,9 @@ FrameWidgetClass GMapRoot {
          filter 1
         }
         ButtonWidgetClass SettingsClose {
+         visible 1
+         disabled 0
+         priority 20
          position 0 0
          size 1 1
          hexactpos 0

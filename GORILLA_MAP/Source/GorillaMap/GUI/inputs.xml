@@ -2,15 +2,15 @@
 <modded_inputs>
     <inputs>
         <actions>
-            <input name="UAGorillaMapToggle" loc="GORILLA MAP: открыть карту" />
+            <input name="UAGorillaMapOpen" loc="GORILLA MAP: открыть/закрыть карту" />
         </actions>
         <sorting name="GORILLA_MAP" loc="GORILLA MAP">
-            <input name="UAGorillaMapToggle" />
+            <input name="UAGorillaMapOpen" />
         </sorting>
     </inputs>
     <preset>
-        <input name="UAGorillaMapToggle">
-            <btn name="kM" />
+        <input name="UAGorillaMapOpen">
+            <btn name="kF6" />
         </input>
     </preset>
 </modded_inputs>

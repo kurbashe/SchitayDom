@@ -3,11 +3,11 @@
   "addons": {
     "GorillaMap": {
       "path": "@GorillaMap/addons/gorillamap.pbo",
-      "pbo_sha256": "21d1048d8a6a100f500b232564027ea92607b01bcf5dad29fbef1eab8b38c024",
+      "pbo_sha256": "40aa2f7d775dd339dc086896a6131cc470c0e868968a238d6e20e709e371a8cf",
       "files": {
-        "GUI/inputs.xml": "4f6b04b3a3f2bb7fdb9a0c67f3fb6f47c5f7e9b505e5fe8f54701306f78bfe0e",
-        "GUI/layouts/main.layout": "c3efae33c01c1417a01605c6d2999da1a64ee885dba56cc2369d2c4a7c68f7f2",
-        "GUI/layouts/marker_row.layout": "2b79c804420386877d10e55c5c3442abf26e34371243fbcd43cf494df7cabcf1",
+        "GUI/inputs.xml": "a1f9fbb4136954fc0e908da6d11f35a588f6c6d0fc8b5d25e44fbf006e0da61f",
+        "GUI/layouts/main.layout": "5d65299a561366be8f9dc8b0161b6c89b7c1a5017ea706a1b262178c4820eea0",
+        "GUI/layouts/marker_row.layout": "43511e11d41ff75fc413353403b9738e418c88bdcbf2ca7ca6efeb5ad5bed1af",
         "GUI/textures/button_blue.paa": "716c0e7646d20b594a9fd9e59c7931c3cd8489f0a6f01a4758c276872b1e15c3",
         "GUI/textures/button_square.paa": "a1c5ab94c9da614f108cf7f6479f0e55cf1990d924260baf0897b680ec1c3f8e",
         "GUI/textures/button_square_active.paa": "42366cd4e869e415214cb4a0483e86d5637b563b2c6b76c76cf5ba5df634635d",
@@ -45,23 +45,24 @@
         "GUI/textures/marker_water_ca.paa": "0e2e67c0777d4916edf4be89d18ade9c914d20622a4a71034a4442bdefe865d6",
         "GUI/textures/panel.paa": "67a6e2d606c6bb180dc90fca00e9a4d61ce25fd4a592f367f08c1dec4cdf45ed",
         "GUI/textures/panel_modal.paa": "e6a09ef095da53ab68888c0f640baef085de503034bc1781c7615f3e64590f9f",
-        "Scripts/3_Game/GorillaMap/GMapData.c": "307f3f8f8187777328ccf05f97322c3fb643fc7be7d2223c0b0b0a8d2fd73892",
+        "Scripts/3_Game/GorillaMap/GMapData.c": "24671b83d2ab2921e97d00524d517d646f977df283bfcb9f3f80a587a4c81fa5",
         "Scripts/4_World/GorillaMap/GMapClientRPC.c": "3d0ea6746f5d9a7342f4748f8a31fecb6c4b704dbb5c699b8923e3f675a5f145",
-        "Scripts/5_Mission/GorillaMap/GMapMenu.c": "73a2346976327ed0d3f809b3d5411b9b61ac6c8161be2f82d3357fc34d61e0b1",
-        "Scripts/5_Mission/GorillaMap/GMapMission.c": "ceceb0fa2ca2fd09d93f0887a57fad9e394feb343b628f389eddc9e90fc319df",
+        "Scripts/5_Mission/GorillaMap/GMapMapHandler.c": "8b4f8671dccf66b02557a818d2a6050ac5f26bc7788d8c56cd6661fd3b187ef5",
+        "Scripts/5_Mission/GorillaMap/GMapMenu.c": "2a3d9567fcd941b1321625d9ef80e45cec600ac188af5d72ef3bf6a441bc4585",
+        "Scripts/5_Mission/GorillaMap/GMapMission.c": "22b18b5002d23521ac4e8773346fa0cbdd1e530c4ba8b63b994a41cb3422ac67",
         "Scripts/5_Mission/GorillaMap/GMapPreferences.c": "f9c4f9b8a420ceb86174739a96f892561ce642c5131fcf98224926f0c60e140e",
-        "config.cpp": "791d9b705d2dcf70f1b374819186954ba44910b4657cbb9c61e4f85c977cb51d"
+        "config.cpp": "e50376a7c7dffa6bb573a6c55ecb37c756533c1dae55243dc58e976a1185adc0"
       }
     },
     "GorillaMapServer": {
       "path": "@GorillaMapServer/addons/gorillamap_server.pbo",
-      "pbo_sha256": "c1ce4dd744727e12d1e74165016dd7c2cfc7410a782d717c7b7399969f510d37",
+      "pbo_sha256": "8cb60508a8ad4d20d22167f4c583cfa8251e2c322c94ddbe8e010f66fb03120b",
       "files": {
         "Scripts/3_Game/GorillaMapServer/GMapServerData.c": "5729b7f557b067939396f086fc343b187d5e2241363201c270e264fa4a79d18e",
         "Scripts/4_World/GorillaMapServer/GMapServerRPC.c": "421841feb37951c24f1bec2020bc7f57fc381a1e0a2b35a7b43aa699d34525e8",
         "Scripts/4_World/GorillaMapServer/GMapService.c": "d58a1f0e25879d632e7f698c7a3c09ea3cafc977a08d34f98a262f9ac67a37be",
         "Scripts/5_Mission/GorillaMapServer/GMapServerMission.c": "5e692109dfb73852b4756326d0c9c2158ef143f956e48fb713e63763c1317b03",
-        "config.cpp": "24ca8e2cc9a23cc61bda6831a90e49d7b8e95b4eaf1797ebf4056ad8bfc68133"
+        "config.cpp": "39183e449843f664880e5822faf37de59e11b0d68421beb1c1a1c58673847a2d"
       }
     }
   },
