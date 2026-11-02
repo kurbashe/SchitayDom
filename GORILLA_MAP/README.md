@@ -1,4 +1,4 @@
-# GORILLA MAP 0.1.1 — Черноруссия
+# GORILLA MAP 0.1.2 — Черноруссия
 
 Мод карты DayZ по предоставленному макету. Без CF/Expansion. Поставка разделена на **два PBO**: общий/клиентский и серверный.
 
@@ -134,6 +134,7 @@ DayZServer/
 
 ```bat
 python tools/test_packaging.py
+python tools/test_source_checks.py
 python tools/verify.py
 python tools/build.py
 python tools/verify.py --pbo dist/@GorillaMap/addons/gorillamap.pbo --server-pbo dist/@GorillaMapServer/addons/gorillamap_server.pbo

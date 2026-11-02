@@ -240,7 +240,7 @@ class GMapMenu extends UIScriptedMenu
         {
             if (!marker || marker.Kind < 0 || marker.Kind > 4)
                 continue;
-            counts[marker.Kind]++;
+            counts[marker.Kind] = counts[marker.Kind] + 1;
             Widget parent = W(RowsFor(marker.Kind));
             if (!parent)
                 continue;

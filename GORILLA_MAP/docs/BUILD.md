@@ -4,6 +4,7 @@
 
 ```sh
 python tools/test_packaging.py
+python tools/test_source_checks.py
 python tools/verify.py
 python tools/build.py
 python tools/verify.py --pbo dist/@GorillaMap/addons/gorillamap.pbo --server-pbo dist/@GorillaMapServer/addons/gorillamap_server.pbo

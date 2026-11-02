@@ -20,6 +20,13 @@ def without_comments_and_strings(text: str) -> str:
     return token.sub(lambda m: "\n" * m.group().count("\n"), text)
 
 
+def unsupported_index_increments(text: str) -> list[int]:
+    """Known Enforce compiler rejection: array access is a temporary for ++/--."""
+    clean = without_comments_and_strings(text)
+    pattern = re.compile(r'\]\s*(?:\+\+|--)|(?:\+\+|--)\s*[A-Za-z_]\w*(?:\s*\.\s*[A-Za-z_]\w*)*\s*\[')
+    return [clean.count("\n", 0, match.start()) + 1 for match in pattern.finditer(clean)]
+
+
 def verify_source(root: Path) -> tuple[list[str], int, int]:
     sources = {prefix: collect_source(root / "Source" / prefix) for prefix, _, _, _ in ADDONS}
     validate_boundaries(sources)
@@ -37,6 +44,9 @@ def verify_source(root: Path) -> tuple[list[str], int, int]:
         if Path(name).suffix.lower() not in (".cpp", ".c", ".layout", ".rvmat"):
             continue
         clean = without_comments_and_strings(texts[name])
+        if name.endswith(".c"):
+            for unsupported_line in unsupported_index_increments(texts[name]):
+                errors.append(f"{name}:{unsupported_line}: Enforce rejects ++/-- on indexed values; use explicit assignment")
         stack = []
         line = 1
         pairs = {"}": "{", ")": "(", "]": "["}
