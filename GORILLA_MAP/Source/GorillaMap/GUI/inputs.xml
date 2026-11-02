@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modded_inputs>
+    <inputs>
+        <actions>
+            <input name="UAGorillaMapToggle" loc="GORILLA MAP: открыть карту" />
+        </actions>
+        <sorting name="GORILLA_MAP" loc="GORILLA MAP">
+            <input name="UAGorillaMapToggle" />
+        </sorting>
+    </inputs>
+    <preset>
+        <input name="UAGorillaMapToggle">
+            <btn name="kM" />
+        </input>
+    </preset>
+</modded_inputs>

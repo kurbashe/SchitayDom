@@ -1,0 +1,2624 @@
+FrameWidgetClass GMapRoot {
+ position 0 0
+ size 1 1
+ hexactpos 0
+ vexactpos 0
+ hexactsize 0
+ vexactsize 0
+ ignorepointer 0
+ {
+  MapWidgetClass Map {
+   position 0 0
+   size 1 1
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   ignorepointer 0
+  }
+  CanvasWidgetClass ZoneCanvas {
+   position 0 0
+   size 1 1
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   ignorepointer 1
+  }
+  TextWidgetClass PlayerLabel {
+   position 0 0
+   size 0.18 0.035
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   visible 0
+   ignorepointer 1
+   color 0 0.92 0.65 1
+   style Normal
+   text "Вы"
+   font "gui/fonts/sdf_MetronLight72"
+   "exact text" 1
+   "exact text size" 17
+   "text halign" left
+   "text valign" center
+  }
+  FrameWidgetClass Sidebar {
+   position 0.012 0.025
+   size 0.25 0.95
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   {
+    ImageWidgetClass SidebarBackground {
+     position 0 0
+     size 1 1
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 1
+     color 1 1 1 1
+     image0 "GorillaMap/GUI/textures/panel.paa"
+     mode blend
+     "src alpha" 1
+     "stretch mode" stretch_w_h
+     filter 1
+    }
+    ImageWidgetClass Logo {
+     position 0.045 0.022
+     size 0.17 0.085
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 1
+     color 1 1 1 1
+     image0 "GorillaMap/GUI/textures/logo.paa"
+     mode blend
+     "src alpha" 1
+     "stretch mode" stretch_w_h
+     filter 1
+    }
+    TextWidgetClass Title {
+     position 0.26 0.025
+     size 0.67 0.045
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 1
+     color 0.91 0.95 1 1
+     style Normal
+     text "Список меток"
+     font "gui/fonts/sdf_MetronLight72"
+     "exact text" 1
+     "exact text size" 27
+     "text halign" left
+     "text valign" center
+     "size to text h" 0
+     "size to text v" 0
+    }
+    TextWidgetClass Subtitle {
+     position 0.26 0.07
+     size 0.66 0.03
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 1
+     color 0.48 0.61 0.73 1
+     style Normal
+     text "Управление метками на карте"
+     font "gui/fonts/sdf_MetronLight72"
+     "exact text" 1
+     "exact text size" 13
+     "text halign" left
+     "text valign" center
+     "size to text h" 0
+     "size to text v" 0
+    }
+    FrameWidgetClass CollapseSidebarFrame {
+     position 0.87 0.022
+     size 0.09 0.045
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     {
+      ImageWidgetClass CollapseSidebarBackground {
+       position 0 0
+       size 1 1
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 1 1 1 1
+       image0 "GorillaMap/GUI/textures/button_square.paa"
+       mode blend
+       "src alpha" 1
+       "stretch mode" stretch_w_h
+       filter 1
+      }
+      ButtonWidgetClass CollapseSidebar {
+       position 0 0
+       size 1 1
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 0
+       style blank
+       "no focus" 1
+       color 0.91 0.95 1 1
+       text "«"
+       font "gui/fonts/sdf_MetronLight72"
+       "exact text" 1
+       "exact text size" 24
+       "text halign" center
+       "text valign" center
+      }
+     }
+    }
+    ScrollWidgetClass SectionsScroll {
+     position 0.035 0.125
+     size 0.93 0.64
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 0
+     style blank
+     "Scrollbar V" 1
+     "Ignore invisible" 1
+     {
+      GridSpacerWidgetClass SectionsStack {
+       position 0 0
+       size 1 0
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 1
+       ignorepointer 0
+       Padding 0
+       Margin 4
+       "Size To Content H" 0
+       "Size To Content V" 1
+       "Ignore invisible" 1
+       content_halign left
+       content_valign top
+       Columns 1
+       Rows 500
+       {
+        FrameWidgetClass ServerHeader {
+         position 0 0
+         size 1 55
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         {
+          ImageWidgetClass ServerHeaderBackground {
+           position 0 0
+           size 1 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 1 1 1 1
+           image0 "GorillaMap/GUI/textures/card_blue.paa"
+           mode blend
+           "src alpha" 1
+           "stretch mode" stretch_w_h
+           filter 1
+          }
+          ImageWidgetClass ServerHeaderIcon {
+           position 0.045 0.2
+           size 0.09 0.6
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 0.10 0.65 1 1
+           image0 "GorillaMap/GUI/textures/icon_globe_ca.paa"
+           mode blend
+           "src alpha" 1
+           "stretch mode" stretch_w_h
+           filter 1
+          }
+          TextWidgetClass ServerHeaderTitle {
+           position 0.18 0
+           size 0.65 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 0.91 0.95 1 1
+           style Normal
+           text "Серверные метки"
+           font "gui/fonts/sdf_MetronLight72"
+           "exact text" 1
+           "exact text size" 18
+           "text halign" left
+           "text valign" center
+           "size to text h" 0
+           "size to text v" 0
+          }
+          TextWidgetClass ServerCount {
+           position 0.82 0
+           size 0.08 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 0.48 0.61 0.73 1
+           style Normal
+           text "0"
+           font "gui/fonts/sdf_MetronLight72"
+           "exact text" 1
+           "exact text size" 16
+           "text halign" center
+           "text valign" center
+           "size to text h" 0
+           "size to text v" 0
+          }
+          ButtonWidgetClass ToggleServer {
+           position 0 0
+           size 1 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 0
+           style blank
+           "no focus" 1
+          }
+          TextWidgetClass ServerChevron {
+           position 0.91 0
+           size 0.06 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 0.91 0.95 1 1
+           style Normal
+           text "⌃"
+           font "gui/fonts/sdf_MetronLight72"
+           "exact text" 1
+           "exact text size" 20
+           "text halign" left
+           "text valign" center
+           "size to text h" 0
+           "size to text v" 0
+          }
+         }
+        }
+        GridSpacerWidgetClass ServerRows {
+         position 0 0
+         size 1 0
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         ignorepointer 0
+         Padding 0
+         Margin 4
+         "Size To Content H" 0
+         "Size To Content V" 1
+         "Ignore invisible" 1
+         content_halign left
+         content_valign top
+         Columns 1
+         Rows 500
+        }
+        FrameWidgetClass ZonesHeader {
+         position 0 0
+         size 1 55
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         {
+          ImageWidgetClass ZonesHeaderBackground {
+           position 0 0
+           size 1 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 1 1 1 1
+           image0 "GorillaMap/GUI/textures/card_yellow.paa"
+           mode blend
+           "src alpha" 1
+           "stretch mode" stretch_w_h
+           filter 1
+          }
+          ImageWidgetClass ZonesHeaderIcon {
+           position 0.045 0.2
+           size 0.09 0.6
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 1 0.78 0.19 1
+           image0 "GorillaMap/GUI/textures/icon_star_ca.paa"
+           mode blend
+           "src alpha" 1
+           "stretch mode" stretch_w_h
+           filter 1
+          }
+          TextWidgetClass ZonesHeaderTitle {
+           position 0.18 0
+           size 0.65 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 0.91 0.95 1 1
+           style Normal
+           text "Серверные зоны"
+           font "gui/fonts/sdf_MetronLight72"
+           "exact text" 1
+           "exact text size" 18
+           "text halign" left
+           "text valign" center
+           "size to text h" 0
+           "size to text v" 0
+          }
+          TextWidgetClass ZoneCount {
+           position 0.82 0
+           size 0.08 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 0.48 0.61 0.73 1
+           style Normal
+           text "0"
+           font "gui/fonts/sdf_MetronLight72"
+           "exact text" 1
+           "exact text size" 16
+           "text halign" center
+           "text valign" center
+           "size to text h" 0
+           "size to text v" 0
+          }
+          ButtonWidgetClass ToggleZones {
+           position 0 0
+           size 1 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 0
+           style blank
+           "no focus" 1
+          }
+          TextWidgetClass ZonesChevron {
+           position 0.91 0
+           size 0.06 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 0.91 0.95 1 1
+           style Normal
+           text "⌃"
+           font "gui/fonts/sdf_MetronLight72"
+           "exact text" 1
+           "exact text size" 20
+           "text halign" left
+           "text valign" center
+           "size to text h" 0
+           "size to text v" 0
+          }
+         }
+        }
+        GridSpacerWidgetClass ZoneRows {
+         position 0 0
+         size 1 0
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         ignorepointer 0
+         Padding 0
+         Margin 4
+         "Size To Content H" 0
+         "Size To Content V" 1
+         "Ignore invisible" 1
+         content_halign left
+         content_valign top
+         Columns 1
+         Rows 500
+        }
+        FrameWidgetClass BuildHeader {
+         position 0 0
+         size 1 55
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         {
+          ImageWidgetClass BuildHeaderBackground {
+           position 0 0
+           size 1 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 1 1 1 1
+           image0 "GorillaMap/GUI/textures/card_red.paa"
+           mode blend
+           "src alpha" 1
+           "stretch mode" stretch_w_h
+           filter 1
+          }
+          ImageWidgetClass BuildHeaderIcon {
+           position 0.045 0.2
+           size 0.09 0.6
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 1 0.17 0.24 1
+           image0 "GorillaMap/GUI/textures/icon_prohibited_ca.paa"
+           mode blend
+           "src alpha" 1
+           "stretch mode" stretch_w_h
+           filter 1
+          }
+          TextWidgetClass BuildHeaderTitle {
+           position 0.18 0
+           size 0.65 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 0.91 0.95 1 1
+           style Normal
+           text "Нельзя строить"
+           font "gui/fonts/sdf_MetronLight72"
+           "exact text" 1
+           "exact text size" 18
+           "text halign" left
+           "text valign" center
+           "size to text h" 0
+           "size to text v" 0
+          }
+          TextWidgetClass BuildCount {
+           position 0.82 0
+           size 0.08 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 0.48 0.61 0.73 1
+           style Normal
+           text "0"
+           font "gui/fonts/sdf_MetronLight72"
+           "exact text" 1
+           "exact text size" 16
+           "text halign" center
+           "text valign" center
+           "size to text h" 0
+           "size to text v" 0
+          }
+          ButtonWidgetClass ToggleBuild {
+           position 0 0
+           size 1 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 0
+           style blank
+           "no focus" 1
+          }
+          TextWidgetClass BuildChevron {
+           position 0.91 0
+           size 0.06 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 0.91 0.95 1 1
+           style Normal
+           text "⌃"
+           font "gui/fonts/sdf_MetronLight72"
+           "exact text" 1
+           "exact text size" 20
+           "text halign" left
+           "text valign" center
+           "size to text h" 0
+           "size to text v" 0
+          }
+         }
+        }
+        GridSpacerWidgetClass BuildRows {
+         position 0 0
+         size 1 0
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         ignorepointer 0
+         Padding 0
+         Margin 4
+         "Size To Content H" 0
+         "Size To Content V" 1
+         "Ignore invisible" 1
+         content_halign left
+         content_valign top
+         Columns 1
+         Rows 500
+        }
+        FrameWidgetClass PersonalHeader {
+         position 0 0
+         size 1 55
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         {
+          ImageWidgetClass PersonalHeaderBackground {
+           position 0 0
+           size 1 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 1 1 1 1
+           image0 "GorillaMap/GUI/textures/card_green.paa"
+           mode blend
+           "src alpha" 1
+           "stretch mode" stretch_w_h
+           filter 1
+          }
+          ImageWidgetClass PersonalHeaderIcon {
+           position 0.045 0.2
+           size 0.09 0.6
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 0.0 0.95 0.58 1
+           image0 "GorillaMap/GUI/textures/icon_person_ca.paa"
+           mode blend
+           "src alpha" 1
+           "stretch mode" stretch_w_h
+           filter 1
+          }
+          TextWidgetClass PersonalHeaderTitle {
+           position 0.18 0
+           size 0.65 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 0.91 0.95 1 1
+           style Normal
+           text "Мои метки"
+           font "gui/fonts/sdf_MetronLight72"
+           "exact text" 1
+           "exact text size" 18
+           "text halign" left
+           "text valign" center
+           "size to text h" 0
+           "size to text v" 0
+          }
+          TextWidgetClass PersonalCount {
+           position 0.82 0
+           size 0.08 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 0.48 0.61 0.73 1
+           style Normal
+           text "0"
+           font "gui/fonts/sdf_MetronLight72"
+           "exact text" 1
+           "exact text size" 16
+           "text halign" center
+           "text valign" center
+           "size to text h" 0
+           "size to text v" 0
+          }
+          ButtonWidgetClass TogglePersonal {
+           position 0 0
+           size 1 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 0
+           style blank
+           "no focus" 1
+          }
+          TextWidgetClass PersonalChevron {
+           position 0.91 0
+           size 0.06 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 0.91 0.95 1 1
+           style Normal
+           text "⌃"
+           font "gui/fonts/sdf_MetronLight72"
+           "exact text" 1
+           "exact text size" 20
+           "text halign" left
+           "text valign" center
+           "size to text h" 0
+           "size to text v" 0
+          }
+         }
+        }
+        GridSpacerWidgetClass PersonalRows {
+         position 0 0
+         size 1 0
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         ignorepointer 0
+         Padding 0
+         Margin 4
+         "Size To Content H" 0
+         "Size To Content V" 1
+         "Ignore invisible" 1
+         content_halign left
+         content_valign top
+         Columns 1
+         Rows 500
+        }
+        FrameWidgetClass GroupHeader {
+         position 0 0
+         size 1 55
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         {
+          ImageWidgetClass GroupHeaderBackground {
+           position 0 0
+           size 1 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 1 1 1 1
+           image0 "GorillaMap/GUI/textures/card_purple.paa"
+           mode blend
+           "src alpha" 1
+           "stretch mode" stretch_w_h
+           filter 1
+          }
+          ImageWidgetClass GroupHeaderIcon {
+           position 0.045 0.2
+           size 0.09 0.6
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 0.75 0.42 1 1
+           image0 "GorillaMap/GUI/textures/icon_group_ca.paa"
+           mode blend
+           "src alpha" 1
+           "stretch mode" stretch_w_h
+           filter 1
+          }
+          TextWidgetClass GroupHeaderTitle {
+           position 0.18 0
+           size 0.65 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 0.91 0.95 1 1
+           style Normal
+           text "Метки группы"
+           font "gui/fonts/sdf_MetronLight72"
+           "exact text" 1
+           "exact text size" 18
+           "text halign" left
+           "text valign" center
+           "size to text h" 0
+           "size to text v" 0
+          }
+          TextWidgetClass GroupCount {
+           position 0.82 0
+           size 0.08 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 0.48 0.61 0.73 1
+           style Normal
+           text "0"
+           font "gui/fonts/sdf_MetronLight72"
+           "exact text" 1
+           "exact text size" 16
+           "text halign" center
+           "text valign" center
+           "size to text h" 0
+           "size to text v" 0
+          }
+          ButtonWidgetClass ToggleGroup {
+           position 0 0
+           size 1 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 0
+           style blank
+           "no focus" 1
+          }
+          TextWidgetClass GroupChevron {
+           position 0.91 0
+           size 0.06 1
+           hexactpos 0
+           vexactpos 0
+           hexactsize 0
+           vexactsize 0
+           ignorepointer 1
+           color 0.91 0.95 1 1
+           style Normal
+           text "⌃"
+           font "gui/fonts/sdf_MetronLight72"
+           "exact text" 1
+           "exact text size" 20
+           "text halign" left
+           "text valign" center
+           "size to text h" 0
+           "size to text v" 0
+          }
+         }
+        }
+        GridSpacerWidgetClass GroupRows {
+         position 0 0
+         size 1 0
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 1
+         ignorepointer 0
+         Padding 0
+         Margin 4
+         "Size To Content H" 0
+         "Size To Content V" 1
+         "Ignore invisible" 1
+         content_halign left
+         content_valign top
+         Columns 1
+         Rows 500
+        }
+       }
+      }
+     }
+    }
+    FrameWidgetClass CreateMarkerFrame {
+     position 0.065 0.785
+     size 0.87 0.055
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     {
+      ImageWidgetClass CreateMarkerBackground {
+       position 0 0
+       size 1 1
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 1 1 1 1
+       image0 "GorillaMap/GUI/textures/button_blue.paa"
+       mode blend
+       "src alpha" 1
+       "stretch mode" stretch_w_h
+       filter 1
+      }
+      ButtonWidgetClass CreateMarker {
+       position 0 0
+       size 1 1
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 0
+       style blank
+       "no focus" 1
+       color 0.91 0.95 1 1
+       text "+  Создать метку"
+       font "gui/fonts/sdf_MetronLight72"
+       "exact text" 1
+       "exact text size" 18
+       "text halign" center
+       "text valign" center
+      }
+     }
+    }
+    TextWidgetClass Status {
+     position 0.07 0.846
+     size 0.86 0.035
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 1
+     color 0.48 0.61 0.73 1
+     style Normal
+     text "Подключение к серверу…"
+     font "gui/fonts/sdf_MetronLight72"
+     "exact text" 1
+     "exact text size" 13
+     "text halign" left
+     "text valign" center
+     "size to text h" 0
+     "size to text v" 0
+    }
+    FrameWidgetClass OpenGroupsFrame {
+     position 0.065 0.895
+     size 0.27 0.075
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     {
+      ImageWidgetClass OpenGroupsBackground {
+       position 0.22 0
+       size 0.56 0.7
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 1 1 1 1
+       image0 "GorillaMap/GUI/textures/button_square.paa"
+       mode blend
+       "src alpha" 1
+       "stretch mode" stretch_w_h
+       filter 1
+      }
+      ImageWidgetClass OpenGroupsIcon {
+       position 0.36 0.1
+       size 0.28 0.4
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 1 1 1 1
+       image0 "GorillaMap/GUI/textures/icon_group_ca.paa"
+       mode blend
+       "src alpha" 1
+       "stretch mode" stretch_w_h
+       filter 1
+      }
+      TextWidgetClass OpenGroupsLabel {
+       position 0 0.75
+       size 1 0.25
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 0.48 0.61 0.73 1
+       style Normal
+       text "Группа"
+       font "gui/fonts/sdf_MetronLight72"
+       "exact text" 1
+       "exact text size" 13
+       "text halign" center
+       "text valign" center
+       "size to text h" 0
+       "size to text v" 0
+      }
+      ButtonWidgetClass OpenGroups {
+       position 0 0
+       size 1 1
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 0
+       style blank
+       "no focus" 1
+      }
+     }
+    }
+    FrameWidgetClass OpenSettingsFrame {
+     position 0.365 0.895
+     size 0.27 0.075
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     {
+      ImageWidgetClass OpenSettingsBackground {
+       position 0.22 0
+       size 0.56 0.7
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 1 1 1 1
+       image0 "GorillaMap/GUI/textures/button_square.paa"
+       mode blend
+       "src alpha" 1
+       "stretch mode" stretch_w_h
+       filter 1
+      }
+      ImageWidgetClass OpenSettingsIcon {
+       position 0.36 0.1
+       size 0.28 0.4
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 1 1 1 1
+       image0 "GorillaMap/GUI/textures/icon_gear_ca.paa"
+       mode blend
+       "src alpha" 1
+       "stretch mode" stretch_w_h
+       filter 1
+      }
+      TextWidgetClass OpenSettingsLabel {
+       position 0 0.75
+       size 1 0.25
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 0.48 0.61 0.73 1
+       style Normal
+       text "Настройки"
+       font "gui/fonts/sdf_MetronLight72"
+       "exact text" 1
+       "exact text size" 13
+       "text halign" center
+       "text valign" center
+       "size to text h" 0
+       "size to text v" 0
+      }
+      ButtonWidgetClass OpenSettings {
+       position 0 0
+       size 1 1
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 0
+       style blank
+       "no focus" 1
+      }
+     }
+    }
+    FrameWidgetClass CloseMapFrame {
+     position 0.665 0.895
+     size 0.27 0.075
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     {
+      ImageWidgetClass CloseMapBackground {
+       position 0.22 0
+       size 0.56 0.7
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 1 1 1 1
+       image0 "GorillaMap/GUI/textures/button_square.paa"
+       mode blend
+       "src alpha" 1
+       "stretch mode" stretch_w_h
+       filter 1
+      }
+      ImageWidgetClass CloseMapIcon {
+       position 0.36 0.1
+       size 0.28 0.4
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 1 1 1 1
+       image0 "GorillaMap/GUI/textures/icon_close_ca.paa"
+       mode blend
+       "src alpha" 1
+       "stretch mode" stretch_w_h
+       filter 1
+      }
+      TextWidgetClass CloseMapLabel {
+       position 0 0.75
+       size 1 0.25
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 0.48 0.61 0.73 1
+       style Normal
+       text "Закрыть"
+       font "gui/fonts/sdf_MetronLight72"
+       "exact text" 1
+       "exact text size" 13
+       "text halign" center
+       "text valign" center
+       "size to text h" 0
+       "size to text v" 0
+      }
+      ButtonWidgetClass CloseMap {
+       position 0 0
+       size 1 1
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 0
+       style blank
+       "no focus" 1
+      }
+     }
+    }
+    TextWidgetClass Brand {
+     position 0.07 0.972
+     size 0.86 0.018
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 1
+     color 0.48 0.61 0.73 1
+     style Normal
+     text "GORILLA MAP  /  CHERNARUS"
+     font "gui/fonts/sdf_MetronLight72"
+     "exact text" 1
+     "exact text size" 10
+     "text halign" center
+     "text valign" center
+     "size to text h" 0
+     "size to text v" 0
+    }
+   }
+  }
+  FrameWidgetClass ExpandSidebarFrame {
+ visible 0
+   position 0.015 0.025
+   size 0.105 0.055
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   {
+    ImageWidgetClass ExpandSidebarBackground {
+     position 0 0
+     size 1 1
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 1
+     color 1 1 1 1
+     image0 "GorillaMap/GUI/textures/button_square.paa"
+     mode blend
+     "src alpha" 1
+     "stretch mode" stretch_w_h
+     filter 1
+    }
+    ButtonWidgetClass ExpandSidebar {
+     position 0 0
+     size 1 1
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 0
+     style blank
+     "no focus" 1
+     color 0.91 0.95 1 1
+     text "☰  Метки"
+     font "gui/fonts/sdf_MetronLight72"
+     "exact text" 1
+     "exact text size" 18
+     "text halign" center
+     "text valign" center
+    }
+   }
+  }
+  FrameWidgetClass WorldBadge {
+   position 0.277 0.025
+   size 0.15 0.055
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   {
+    ImageWidgetClass WorldBadgeBackground {
+     position 0 0
+     size 1 1
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 1
+     color 1 1 1 1
+     image0 "GorillaMap/GUI/textures/button_square.paa"
+     mode blend
+     "src alpha" 1
+     "stretch mode" stretch_w_h
+     filter 1
+    }
+    TextWidgetClass WorldLabel {
+     position 0.07 0
+     size 0.86 1
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 1
+     color 0.91 0.95 1 1
+     style Normal
+     text "ЧЕРНОРУССИЯ"
+     font "gui/fonts/sdf_MetronLight72"
+     "exact text" 1
+     "exact text size" 16
+     "text halign" left
+     "text valign" center
+     "size to text h" 0
+     "size to text v" 0
+    }
+   }
+  }
+  FrameWidgetClass Compass {
+   position 0.938 0.025
+   size 0.045 0.08
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   {
+    ImageWidgetClass CompassImage {
+     position 0 0
+     size 1 1
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 1
+     color 1 1 1 1
+     image0 "GorillaMap/GUI/textures/compass.paa"
+     mode blend
+     "src alpha" 1
+     "stretch mode" stretch_w_h
+     filter 1
+    }
+   }
+  }
+  FrameWidgetClass InfoCard {
+   position 0.792 0.675
+   size 0.195 0.3
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   {
+    ImageWidgetClass InfoCardBackground {
+     position 0 0
+     size 1 1
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 1
+     color 1 1 1 1
+     image0 "GorillaMap/GUI/textures/panel.paa"
+     mode blend
+     "src alpha" 1
+     "stretch mode" stretch_w_h
+     filter 1
+    }
+    TextWidgetClass Coordinates {
+     position 0.09 0.045
+     size 0.66 0.12
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 1
+     color 0.91 0.95 1 1
+     style Normal
+     text "0 / 0"
+     font "gui/fonts/sdf_MetronLight72"
+     "exact text" 1
+     "exact text size" 19
+     "text halign" left
+     "text valign" center
+     "size to text h" 0
+     "size to text v" 0
+    }
+    FrameWidgetClass CenterPlayerFrame {
+     position 0.79 0.045
+     size 0.14 0.12
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     {
+      ImageWidgetClass CenterPlayerBackground {
+       position 0 0
+       size 1 1
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 1 1 1 1
+       image0 "GorillaMap/GUI/textures/button_square.paa"
+       mode blend
+       "src alpha" 1
+       "stretch mode" stretch_w_h
+       filter 1
+      }
+      ButtonWidgetClass CenterPlayer {
+       position 0 0
+       size 1 1
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 0
+       style blank
+       "no focus" 1
+       color 0.91 0.95 1 1
+       text "◎"
+       font "gui/fonts/sdf_MetronLight72"
+       "exact text" 1
+       "exact text size" 24
+       "text halign" center
+       "text valign" center
+      }
+     }
+    }
+    TextWidgetClass InfoDivider {
+     position 0.09 0.17
+     size 0.82 0.045
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 1
+     color 0.48 0.61 0.73 1
+     style Normal
+     text "────────────────────"
+     font "gui/fonts/sdf_MetronLight72"
+     "exact text" 1
+     "exact text size" 13
+     "text halign" left
+     "text valign" center
+     "size to text h" 0
+     "size to text v" 0
+    }
+    TextWidgetClass HintCreate {
+     position 0.09 0.22
+     size 0.85 0.1
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 1
+     color 0.91 0.95 1 1
+     style Normal
+     text "2× ЛКМ    Создать метку"
+     font "gui/fonts/sdf_MetronLight72"
+     "exact text" 1
+     "exact text size" 15
+     "text halign" left
+     "text valign" center
+     "size to text h" 0
+     "size to text v" 0
+    }
+    TextWidgetClass HintSelect {
+     position 0.09 0.33
+     size 0.85 0.1
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 1
+     color 0.91 0.95 1 1
+     style Normal
+     text "ЛКМ         Выбрать метку"
+     font "gui/fonts/sdf_MetronLight72"
+     "exact text" 1
+     "exact text size" 15
+     "text halign" left
+     "text valign" center
+     "size to text h" 0
+     "size to text v" 0
+    }
+    TextWidgetClass HintDrag {
+     position 0.09 0.44
+     size 0.87 0.1
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 1
+     color 0.91 0.95 1 1
+     style Normal
+     text "Зажать ЛКМ    Двигать карту"
+     font "gui/fonts/sdf_MetronLight72"
+     "exact text" 1
+     "exact text size" 14
+     "text halign" left
+     "text valign" center
+     "size to text h" 0
+     "size to text v" 0
+    }
+    TextWidgetClass HintZoom {
+     position 0.09 0.55
+     size 0.86 0.1
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 1
+     color 0.91 0.95 1 1
+     style Normal
+     text "Колесо     Масштаб карты"
+     font "gui/fonts/sdf_MetronLight72"
+     "exact text" 1
+     "exact text size" 15
+     "text halign" left
+     "text valign" center
+     "size to text h" 0
+     "size to text v" 0
+    }
+    TextWidgetClass HintRuler {
+     position 0.09 0.66
+     size 0.85 0.1
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 1
+     color 0.91 0.95 1 1
+     style Normal
+     text "CTRL + L   Линейка"
+     font "gui/fonts/sdf_MetronLight72"
+     "exact text" 1
+     "exact text size" 15
+     "text halign" left
+     "text valign" center
+     "size to text h" 0
+     "size to text v" 0
+    }
+    TextWidgetClass HintCopy {
+     position 0.09 0.77
+     size 0.85 0.1
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 1
+     color 0.91 0.95 1 1
+     style Normal
+     text "CTRL + C   Координаты"
+     font "gui/fonts/sdf_MetronLight72"
+     "exact text" 1
+     "exact text size" 14
+     "text halign" left
+     "text valign" center
+     "size to text h" 0
+     "size to text v" 0
+    }
+    TextWidgetClass ScaleText {
+     position 0.09 0.89
+     size 0.85 0.07
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 1
+     color 0.48 0.61 0.73 1
+     style Normal
+     text ""
+     font "gui/fonts/sdf_MetronLight72"
+     "exact text" 1
+     "exact text size" 12
+     "text halign" left
+     "text valign" center
+     "size to text h" 0
+     "size to text v" 0
+    }
+   }
+  }
+  FrameWidgetClass Editor {
+   position 0 0
+   size 1 1
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   visible 0
+   ignorepointer 0
+   {
+    PanelWidgetClass EditorDim {
+     position 0 0
+     size 1 1
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 0
+     color 0 0.02 0.05 0.7
+     style rover_sim_black_2
+    }
+    FrameWidgetClass EditorPanel {
+     position 0.32999999999999996 0.195
+     size 0.34 0.61
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     {
+      ImageWidgetClass EditorBackground {
+       position 0 0
+       size 1 1
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 1 1 1 1
+       image0 "GorillaMap/GUI/textures/panel_modal.paa"
+       mode blend
+       "src alpha" 1
+       "stretch mode" stretch_w_h
+       filter 1
+      }
+      TextWidgetClass EditorTitle {
+       position 0.07 0.045
+       size 0.85 0.075
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 0.91 0.95 1 1
+       style Normal
+       text "Новая метка"
+       font "gui/fonts/sdf_MetronLight72"
+       "exact text" 1
+       "exact text size" 26
+       "text halign" left
+       "text valign" center
+       "size to text h" 0
+       "size to text v" 0
+      }
+      TextWidgetClass EditorNameLabel {
+       position 0.075 0.16
+       size 0.85 0.045
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 0.48 0.61 0.73 1
+       style Normal
+       text "Название"
+       font "gui/fonts/sdf_MetronLight72"
+       "exact text" 1
+       "exact text size" 14
+       "text halign" left
+       "text valign" center
+       "size to text h" 0
+       "size to text v" 0
+      }
+      EditBoxWidgetClass EditorName {
+       position 0.075 0.215
+       size 0.85 0.075
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 0
+       color 0.83 0.92 1 1
+       style Editor
+       text ""
+       font "gui/fonts/sdf_MetronLight72"
+       "exact text" 1
+       "exact text size" 18
+       "limit visible" 1
+       "Use default text" 0
+      }
+      TextWidgetClass EditorCoordsLabel {
+       position 0.075 0.32
+       size 0.85 0.045
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 0.48 0.61 0.73 1
+       style Normal
+       text "Координаты X / Z"
+       font "gui/fonts/sdf_MetronLight72"
+       "exact text" 1
+       "exact text size" 14
+       "text halign" left
+       "text valign" center
+       "size to text h" 0
+       "size to text v" 0
+      }
+      EditBoxWidgetClass EditorX {
+       position 0.075 0.375
+       size 0.4 0.075
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 0
+       color 0.83 0.92 1 1
+       style Editor
+       text ""
+       font "gui/fonts/sdf_MetronLight72"
+       "exact text" 1
+       "exact text size" 18
+       "limit visible" 1
+       "Use default text" 0
+      }
+      EditBoxWidgetClass EditorZ {
+       position 0.525 0.375
+       size 0.4 0.075
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 0
+       color 0.83 0.92 1 1
+       style Editor
+       text ""
+       font "gui/fonts/sdf_MetronLight72"
+       "exact text" 1
+       "exact text size" 18
+       "limit visible" 1
+       "Use default text" 0
+      }
+      FrameWidgetClass EditorScopeFrame {
+       position 0.075 0.5
+       size 0.85 0.075
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       {
+        ImageWidgetClass EditorScopeBackground {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 1
+         color 1 1 1 1
+         image0 "GorillaMap/GUI/textures/button_square.paa"
+         mode blend
+         "src alpha" 1
+         "stretch mode" stretch_w_h
+         filter 1
+        }
+        ButtonWidgetClass EditorScope {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 0
+         style blank
+         "no focus" 1
+         color 0.91 0.95 1 1
+         text "Личная"
+         font "gui/fonts/sdf_MetronLight72"
+         "exact text" 1
+         "exact text size" 18
+         "text halign" center
+         "text valign" center
+        }
+       }
+      }
+      FrameWidgetClass EditorIconFrame {
+       position 0.075 0.6
+       size 0.4 0.075
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       {
+        ImageWidgetClass EditorIconBackground {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 1
+         color 1 1 1 1
+         image0 "GorillaMap/GUI/textures/button_square.paa"
+         mode blend
+         "src alpha" 1
+         "stretch mode" stretch_w_h
+         filter 1
+        }
+        ButtonWidgetClass EditorIcon {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 0
+         style blank
+         "no focus" 1
+         color 0.91 0.95 1 1
+         text "Иконка: метка"
+         font "gui/fonts/sdf_MetronLight72"
+         "exact text" 1
+         "exact text size" 16
+         "text halign" center
+         "text valign" center
+        }
+       }
+      }
+      FrameWidgetClass EditorColorFrame {
+       position 0.525 0.6
+       size 0.4 0.075
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       {
+        ImageWidgetClass EditorColorBackground {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 1
+         color 1 1 1 1
+         image0 "GorillaMap/GUI/textures/button_square.paa"
+         mode blend
+         "src alpha" 1
+         "stretch mode" stretch_w_h
+         filter 1
+        }
+        ButtonWidgetClass EditorColor {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 0
+         style blank
+         "no focus" 1
+         color 0.91 0.95 1 1
+         text "Цвет: голубой"
+         font "gui/fonts/sdf_MetronLight72"
+         "exact text" 1
+         "exact text size" 16
+         "text halign" center
+         "text valign" center
+        }
+       }
+      }
+      TextWidgetClass EditorError {
+       position 0.075 0.7
+       size 0.85 0.055
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 1 0.45 0.4 1
+       style Normal
+       text ""
+       font "gui/fonts/sdf_MetronLight72"
+       "exact text" 1
+       "exact text size" 13
+       "text halign" left
+       "text valign" center
+       "size to text h" 0
+       "size to text v" 0
+      }
+      FrameWidgetClass EditorDeleteFrame {
+       position 0.075 0.79
+       size 0.25 0.09
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       {
+        ImageWidgetClass EditorDeleteBackground {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 1
+         color 1 1 1 1
+         image0 "GorillaMap/GUI/textures/button_square.paa"
+         mode blend
+         "src alpha" 1
+         "stretch mode" stretch_w_h
+         filter 1
+        }
+        ButtonWidgetClass EditorDelete {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 0
+         style blank
+         "no focus" 1
+         color 0.91 0.95 1 1
+         text "Удалить"
+         font "gui/fonts/sdf_MetronLight72"
+         "exact text" 1
+         "exact text size" 16
+         "text halign" center
+         "text valign" center
+        }
+       }
+      }
+      FrameWidgetClass EditorCancelFrame {
+       position 0.35 0.79
+       size 0.25 0.09
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       {
+        ImageWidgetClass EditorCancelBackground {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 1
+         color 1 1 1 1
+         image0 "GorillaMap/GUI/textures/button_square.paa"
+         mode blend
+         "src alpha" 1
+         "stretch mode" stretch_w_h
+         filter 1
+        }
+        ButtonWidgetClass EditorCancel {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 0
+         style blank
+         "no focus" 1
+         color 0.91 0.95 1 1
+         text "Отмена"
+         font "gui/fonts/sdf_MetronLight72"
+         "exact text" 1
+         "exact text size" 16
+         "text halign" center
+         "text valign" center
+        }
+       }
+      }
+      FrameWidgetClass EditorSaveFrame {
+       position 0.625 0.79
+       size 0.3 0.09
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       {
+        ImageWidgetClass EditorSaveBackground {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 1
+         color 1 1 1 1
+         image0 "GorillaMap/GUI/textures/button_blue.paa"
+         mode blend
+         "src alpha" 1
+         "stretch mode" stretch_w_h
+         filter 1
+        }
+        ButtonWidgetClass EditorSave {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 0
+         style blank
+         "no focus" 1
+         color 0.91 0.95 1 1
+         text "Сохранить"
+         font "gui/fonts/sdf_MetronLight72"
+         "exact text" 1
+         "exact text size" 17
+         "text halign" center
+         "text valign" center
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  FrameWidgetClass Groups {
+   position 0 0
+   size 1 1
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   visible 0
+   ignorepointer 0
+   {
+    PanelWidgetClass GroupsDim {
+     position 0 0
+     size 1 1
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 0
+     color 0 0.02 0.05 0.7
+     style rover_sim_black_2
+    }
+    FrameWidgetClass GroupsPanel {
+     position 0.28500000000000003 0.09000000000000002
+     size 0.43 0.82
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     {
+      ImageWidgetClass GroupsBackground {
+       position 0 0
+       size 1 1
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 1 1 1 1
+       image0 "GorillaMap/GUI/textures/panel_modal.paa"
+       mode blend
+       "src alpha" 1
+       "stretch mode" stretch_w_h
+       filter 1
+      }
+      TextWidgetClass GroupsTitle {
+       position 0.06 0.035
+       size 0.86 0.06
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 0.91 0.95 1 1
+       style Normal
+       text "Группа"
+       font "gui/fonts/sdf_MetronLight72"
+       "exact text" 1
+       "exact text size" 28
+       "text halign" left
+       "text valign" center
+       "size to text h" 0
+       "size to text v" 0
+      }
+      MultilineTextWidgetClass GroupInfo {
+       position 0.06 0.11
+       size 0.88 0.11
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 0.91 0.95 1 1
+       style Normal
+       text "Группа не создана"
+       font "gui/fonts/sdf_MetronLight72"
+       "exact text" 1
+       "exact text size" 16
+       wrap 1
+       "size to text h" 0
+       "size to text v" 0
+      }
+      EditBoxWidgetClass GroupNameInput {
+       position 0.06 0.245
+       size 0.59 0.055
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 0
+       color 0.83 0.92 1 1
+       style Editor
+       text ""
+       font "gui/fonts/sdf_MetronLight72"
+       "exact text" 1
+       "exact text size" 18
+       "limit visible" 1
+       "Use default text" 0
+      }
+      FrameWidgetClass GroupCreateFrame {
+       position 0.68 0.245
+       size 0.26 0.055
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       {
+        ImageWidgetClass GroupCreateBackground {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 1
+         color 1 1 1 1
+         image0 "GorillaMap/GUI/textures/button_blue.paa"
+         mode blend
+         "src alpha" 1
+         "stretch mode" stretch_w_h
+         filter 1
+        }
+        ButtonWidgetClass GroupCreate {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 0
+         style blank
+         "no focus" 1
+         color 0.91 0.95 1 1
+         text "Создать"
+         font "gui/fonts/sdf_MetronLight72"
+         "exact text" 1
+         "exact text size" 16
+         "text halign" center
+         "text valign" center
+        }
+       }
+      }
+      TextWidgetClass GroupInviteLabel {
+       position 0.06 0.325
+       size 0.88 0.035
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 0.48 0.61 0.73 1
+       style Normal
+       text "Выберите игрока для приглашения"
+       font "gui/fonts/sdf_MetronLight72"
+       "exact text" 1
+       "exact text size" 13
+       "text halign" left
+       "text valign" center
+       "size to text h" 0
+       "size to text v" 0
+      }
+      FrameWidgetClass GroupPickPlayerFrame {
+       position 0.06 0.37
+       size 0.59 0.055
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       {
+        ImageWidgetClass GroupPickPlayerBackground {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 1
+         color 1 1 1 1
+         image0 "GorillaMap/GUI/textures/button_square.paa"
+         mode blend
+         "src alpha" 1
+         "stretch mode" stretch_w_h
+         filter 1
+        }
+        ButtonWidgetClass GroupPickPlayer {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 0
+         style blank
+         "no focus" 1
+         color 0.91 0.95 1 1
+         text "Выбрать игрока"
+         font "gui/fonts/sdf_MetronLight72"
+         "exact text" 1
+         "exact text size" 16
+         "text halign" center
+         "text valign" center
+        }
+       }
+      }
+      FrameWidgetClass GroupInviteFrame {
+       position 0.68 0.37
+       size 0.26 0.055
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       {
+        ImageWidgetClass GroupInviteBackground {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 1
+         color 1 1 1 1
+         image0 "GorillaMap/GUI/textures/button_square.paa"
+         mode blend
+         "src alpha" 1
+         "stretch mode" stretch_w_h
+         filter 1
+        }
+        ButtonWidgetClass GroupInvite {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 0
+         style blank
+         "no focus" 1
+         color 0.91 0.95 1 1
+         text "Пригласить"
+         font "gui/fonts/sdf_MetronLight72"
+         "exact text" 1
+         "exact text size" 15
+         "text halign" center
+         "text valign" center
+        }
+       }
+      }
+      MultilineTextWidgetClass GroupInvitations {
+       position 0.06 0.46
+       size 0.57 0.08
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 0.48 0.61 0.73 1
+       style Normal
+       text "Нет приглашений"
+       font "gui/fonts/sdf_MetronLight72"
+       "exact text" 1
+       "exact text size" 14
+       wrap 1
+       "size to text h" 0
+       "size to text v" 0
+      }
+      FrameWidgetClass GroupAcceptFrame {
+       position 0.65 0.46
+       size 0.29 0.045
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       {
+        ImageWidgetClass GroupAcceptBackground {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 1
+         color 1 1 1 1
+         image0 "GorillaMap/GUI/textures/button_square.paa"
+         mode blend
+         "src alpha" 1
+         "stretch mode" stretch_w_h
+         filter 1
+        }
+        ButtonWidgetClass GroupAccept {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 0
+         style blank
+         "no focus" 1
+         color 0.91 0.95 1 1
+         text "Принять"
+         font "gui/fonts/sdf_MetronLight72"
+         "exact text" 1
+         "exact text size" 14
+         "text halign" center
+         "text valign" center
+        }
+       }
+      }
+      FrameWidgetClass GroupDeclineFrame {
+       position 0.65 0.515
+       size 0.29 0.045
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       {
+        ImageWidgetClass GroupDeclineBackground {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 1
+         color 1 1 1 1
+         image0 "GorillaMap/GUI/textures/button_square.paa"
+         mode blend
+         "src alpha" 1
+         "stretch mode" stretch_w_h
+         filter 1
+        }
+        ButtonWidgetClass GroupDecline {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 0
+         style blank
+         "no focus" 1
+         color 0.91 0.95 1 1
+         text "Отклонить"
+         font "gui/fonts/sdf_MetronLight72"
+         "exact text" 1
+         "exact text size" 14
+         "text halign" center
+         "text valign" center
+        }
+       }
+      }
+      TextWidgetClass GroupPlayersLabel {
+       position 0.06 0.57
+       size 0.88 0.035
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 0.48 0.61 0.73 1
+       style Normal
+       text "Игроки онлайн"
+       font "gui/fonts/sdf_MetronLight72"
+       "exact text" 1
+       "exact text size" 13
+       "text halign" left
+       "text valign" center
+       "size to text h" 0
+       "size to text v" 0
+      }
+      MultilineTextWidgetClass GroupPlayers {
+       position 0.06 0.62
+       size 0.88 0.2
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 0.91 0.95 1 1
+       style Normal
+       text ""
+       font "gui/fonts/sdf_MetronLight72"
+       "exact text" 1
+       "exact text size" 14
+       wrap 1
+       "size to text h" 0
+       "size to text v" 0
+      }
+      FrameWidgetClass GroupLeaveFrame {
+       position 0.06 0.875
+       size 0.43 0.065
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       {
+        ImageWidgetClass GroupLeaveBackground {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 1
+         color 1 1 1 1
+         image0 "GorillaMap/GUI/textures/button_square.paa"
+         mode blend
+         "src alpha" 1
+         "stretch mode" stretch_w_h
+         filter 1
+        }
+        ButtonWidgetClass GroupLeave {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 0
+         style blank
+         "no focus" 1
+         color 0.91 0.95 1 1
+         text "Выйти из группы"
+         font "gui/fonts/sdf_MetronLight72"
+         "exact text" 1
+         "exact text size" 16
+         "text halign" center
+         "text valign" center
+        }
+       }
+      }
+      FrameWidgetClass GroupCloseFrame {
+       position 0.52 0.875
+       size 0.42 0.065
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       {
+        ImageWidgetClass GroupCloseBackground {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 1
+         color 1 1 1 1
+         image0 "GorillaMap/GUI/textures/button_blue.paa"
+         mode blend
+         "src alpha" 1
+         "stretch mode" stretch_w_h
+         filter 1
+        }
+        ButtonWidgetClass GroupClose {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 0
+         style blank
+         "no focus" 1
+         color 0.91 0.95 1 1
+         text "Готово"
+         font "gui/fonts/sdf_MetronLight72"
+         "exact text" 1
+         "exact text size" 17
+         "text halign" center
+         "text valign" center
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  FrameWidgetClass Settings {
+   position 0 0
+   size 1 1
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   visible 0
+   ignorepointer 0
+   {
+    PanelWidgetClass SettingsDim {
+     position 0 0
+     size 1 1
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 0
+     color 0 0.02 0.05 0.7
+     style rover_sim_black_2
+    }
+    FrameWidgetClass SettingsPanel {
+     position 0.325 0.26
+     size 0.35 0.48
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     {
+      ImageWidgetClass SettingsBackground {
+       position 0 0
+       size 1 1
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 1 1 1 1
+       image0 "GorillaMap/GUI/textures/panel_modal.paa"
+       mode blend
+       "src alpha" 1
+       "stretch mode" stretch_w_h
+       filter 1
+      }
+      TextWidgetClass SettingsTitle {
+       position 0.075 0.075
+       size 0.85 0.1
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       ignorepointer 1
+       color 0.91 0.95 1 1
+       style Normal
+       text "Настройки карты"
+       font "gui/fonts/sdf_MetronLight72"
+       "exact text" 1
+       "exact text size" 26
+       "text halign" left
+       "text valign" center
+       "size to text h" 0
+       "size to text v" 0
+      }
+      FrameWidgetClass SettingsPlayerFrame {
+       position 0.075 0.25
+       size 0.85 0.12
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       {
+        ImageWidgetClass SettingsPlayerBackground {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 1
+         color 1 1 1 1
+         image0 "GorillaMap/GUI/textures/button_square.paa"
+         mode blend
+         "src alpha" 1
+         "stretch mode" stretch_w_h
+         filter 1
+        }
+        ButtonWidgetClass SettingsPlayer {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 0
+         style blank
+         "no focus" 1
+         color 0.91 0.95 1 1
+         text "Моя позиция: ВКЛ"
+         font "gui/fonts/sdf_MetronLight72"
+         "exact text" 1
+         "exact text size" 17
+         "text halign" center
+         "text valign" center
+        }
+       }
+      }
+      FrameWidgetClass SettingsNamesFrame {
+       position 0.075 0.4
+       size 0.85 0.12
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       {
+        ImageWidgetClass SettingsNamesBackground {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 1
+         color 1 1 1 1
+         image0 "GorillaMap/GUI/textures/button_square.paa"
+         mode blend
+         "src alpha" 1
+         "stretch mode" stretch_w_h
+         filter 1
+        }
+        ButtonWidgetClass SettingsNames {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 0
+         style blank
+         "no focus" 1
+         color 0.91 0.95 1 1
+         text "Названия меток: ВКЛ"
+         font "gui/fonts/sdf_MetronLight72"
+         "exact text" 1
+         "exact text size" 17
+         "text halign" center
+         "text valign" center
+        }
+       }
+      }
+      FrameWidgetClass SettingsZonesFrame {
+       position 0.075 0.55
+       size 0.85 0.12
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       {
+        ImageWidgetClass SettingsZonesBackground {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 1
+         color 1 1 1 1
+         image0 "GorillaMap/GUI/textures/button_square.paa"
+         mode blend
+         "src alpha" 1
+         "stretch mode" stretch_w_h
+         filter 1
+        }
+        ButtonWidgetClass SettingsZones {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 0
+         style blank
+         "no focus" 1
+         color 0.91 0.95 1 1
+         text "Зоны на карте: ВКЛ"
+         font "gui/fonts/sdf_MetronLight72"
+         "exact text" 1
+         "exact text size" 17
+         "text halign" center
+         "text valign" center
+        }
+       }
+      }
+      FrameWidgetClass SettingsCloseFrame {
+       position 0.075 0.77
+       size 0.85 0.12
+       hexactpos 0
+       vexactpos 0
+       hexactsize 0
+       vexactsize 0
+       {
+        ImageWidgetClass SettingsCloseBackground {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 1
+         color 1 1 1 1
+         image0 "GorillaMap/GUI/textures/button_blue.paa"
+         mode blend
+         "src alpha" 1
+         "stretch mode" stretch_w_h
+         filter 1
+        }
+        ButtonWidgetClass SettingsClose {
+         position 0 0
+         size 1 1
+         hexactpos 0
+         vexactpos 0
+         hexactsize 0
+         vexactsize 0
+         ignorepointer 0
+         style blank
+         "no focus" 1
+         color 0.91 0.95 1 1
+         text "Готово"
+         font "gui/fonts/sdf_MetronLight72"
+         "exact text" 1
+         "exact text size" 18
+         "text halign" center
+         "text valign" center
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,43 @@
+{
+  "Version": 1,
+  "WorldName": "chernarusplus",
+  "WorldSize": 15360.0,
+  "ShowPlayerPosition": true,
+  "MaxPersonalMarkers": 80,
+  "MaxGroupMarkers": 100,
+  "MaxGroupMembers": 8,
+  "MaxGroups": 1000,
+  "MaxAccounts": 10000,
+  "Markers": [
+    {
+      "Id": "server_elektro",
+      "Name": "Электрозаводск",
+      "Position": [10460.0, 0.0, 2270.0],
+      "Color": -16744449,
+      "Icon": "home",
+      "Kind": 0,
+      "Radius": 0.0,
+      "OwnerUid": ""
+    },
+    {
+      "Id": "server_balota_zone",
+      "Name": "Пример зоны: Балота",
+      "Position": [4880.0, 0.0, 2500.0],
+      "Color": -16128,
+      "Icon": "radiation",
+      "Kind": 1,
+      "Radius": 350.0,
+      "OwnerUid": ""
+    },
+    {
+      "Id": "server_cherno_restricted",
+      "Name": "Пример: нельзя строить",
+      "Position": [6680.0, 0.0, 2500.0],
+      "Color": -49088,
+      "Icon": "prohibited",
+      "Kind": 2,
+      "Radius": 250.0,
+      "OwnerUid": ""
+    }
+  ]
+}

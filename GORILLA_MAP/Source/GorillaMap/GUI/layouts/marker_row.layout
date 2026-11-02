@@ -1,0 +1,154 @@
+FrameWidgetClass MarkerRow {
+ position 0 0
+ size 1 44
+ hexactpos 0
+ vexactpos 0
+ hexactsize 0
+ vexactsize 1
+ {
+  ImageWidgetClass RowBackground {
+   position 0 0
+   size 1 1
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   ignorepointer 1
+   color 0.38 0.53 0.67 0.52
+   image0 "GorillaMap/GUI/textures/card_blue.paa"
+   mode blend
+   "src alpha" 1
+   "stretch mode" stretch_w_h
+   filter 1
+  }
+  ImageWidgetClass RowIcon {
+   position 0.045 0.2
+   size 0.07 0.6
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   ignorepointer 1
+   color 0.10 0.65 1 1
+   image0 "GorillaMap/GUI/textures/marker_pin_ca.paa"
+   mode blend
+   "src alpha" 1
+   "stretch mode" stretch_w_h
+   filter 1
+  }
+  ButtonWidgetClass RowSelect {
+   position 0.14 0
+   size 0.6 1
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   ignorepointer 0
+   style blank
+   "no focus" 1
+  }
+  TextWidgetClass RowTitle {
+   position 0.16 0
+   size 0.57 1
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   ignorepointer 1
+   color 0.91 0.95 1 1
+   style Normal
+   text "Название метки"
+   font "gui/fonts/sdf_MetronLight72"
+   "exact text" 1
+   "exact text size" 16
+   "text halign" left
+   "text valign" center
+   "size to text h" 0
+   "size to text v" 0
+  }
+  ButtonWidgetClass RowVisibility {
+   position 0.735 0.18
+   size 0.075 0.64
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   ignorepointer 0
+   style blank
+   "no focus" 1
+   {
+    ImageWidgetClass RowVisibilityIcon {
+     position 0 0
+     size 1 1
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 1
+     color 0.10 0.65 1 1
+     image0 "GorillaMap/GUI/textures/icon_eye_ca.paa"
+     mode blend
+     "src alpha" 1
+     "stretch mode" stretch_w_h
+     filter 1
+    }
+   }
+  }
+  FrameWidgetClass RowEditFrame {
+   position 0.825 0.13
+   size 0.06 0.74
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   {
+    ButtonWidgetClass RowEdit {
+     position 0 0
+     size 1 1
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 0
+     style blank
+     "no focus" 1
+     color 0.91 0.95 1 1
+     text "⋮"
+     font "gui/fonts/sdf_MetronLight72"
+     "exact text" 1
+     "exact text size" 24
+     "text halign" center
+     "text valign" center
+    }
+   }
+  }
+  ButtonWidgetClass RowDelete {
+   position 0.905 0.18
+   size 0.065 0.64
+   hexactpos 0
+   vexactpos 0
+   hexactsize 0
+   vexactsize 0
+   ignorepointer 0
+   style blank
+   "no focus" 1
+   {
+    ImageWidgetClass RowDeleteIcon {
+     position 0 0
+     size 1 1
+     hexactpos 0
+     vexactpos 0
+     hexactsize 0
+     vexactsize 0
+     ignorepointer 1
+     color 0.48 0.61 0.73 1
+     image0 "GorillaMap/GUI/textures/icon_trash_ca.paa"
+     mode blend
+     "src alpha" 1
+     "stretch mode" stretch_w_h
+     filter 1
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,1 @@
+Unsigned development PBO. Before use with verifySignatures=2, sign with your own DSUtils private key, place the .bisign next to the PBO, and install only the public .bikey in the server keys directory. Never distribute the .biprivatekey.
