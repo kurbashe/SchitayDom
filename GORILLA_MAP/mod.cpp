@@ -1,6 +1,6 @@
 name = "GORILLA MAP";
 author = "GORILLA";
-version = "0.1.0";
+version = "0.1.1";
 tooltip = "GORILLA MAP";
-overview = "Современная карта Черноруссии. Личные, серверные и групповые метки.";
+overview = "GORILLA MAP: общий протокол и клиентский интерфейс карты Черноруссии. Серверу дополнительно требуется GorillaMapServer.";
 action = "";

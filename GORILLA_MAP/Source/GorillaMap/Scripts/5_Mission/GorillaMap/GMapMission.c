@@ -14,12 +14,12 @@ modded class MissionGameplay
     {
         super.OnInit();
         GMapClient.Reset();
-        GMapRPC.Init();
+        GMapClientRPC.Init();
     }
 
     override void OnMissionFinish()
     {
-        GMapRPC.Shutdown();
+        GMapClientRPC.Shutdown();
         GMapClient.Reset();
         super.OnMissionFinish();
     }
@@ -35,23 +35,5 @@ modded class MissionGameplay
                 GetGame().GetUIManager().EnterScriptedMenu(784193, null);
         }
         super.OnUpdate(timeslice);
-    }
-};
-
-modded class MissionServer
-{
-    override void OnInit()
-    {
-        super.OnInit();
-        GMapService.Reset();
-        GMapService.Get().Init();
-        GMapRPC.Init();
-    }
-
-    override void OnMissionFinish()
-    {
-        GMapRPC.Shutdown();
-        GMapService.Reset();
-        super.OnMissionFinish();
     }
 };

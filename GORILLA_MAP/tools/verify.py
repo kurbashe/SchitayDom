@@ -11,7 +11,7 @@ import re
 import sys
 import xml.etree.ElementTree as ET
 
-from build import PREFIX, ROOT, PboError, collect_source, decode_pbo, safe_name
+from build import ADDONS, PREFIX, ROOT, PboError, collect_source, decode_pbo, safe_name, validate_boundaries
 
 
 def without_comments_and_strings(text: str) -> str:
@@ -21,8 +21,9 @@ def without_comments_and_strings(text: str) -> str:
 
 
 def verify_source(root: Path) -> tuple[list[str], int, int]:
-    source = root / "Source" / PREFIX
-    files = collect_source(source)
+    sources = {prefix: collect_source(root / "Source" / prefix) for prefix, _, _, _ in ADDONS}
+    validate_boundaries(sources)
+    files = {f"{prefix}/{name}": data for prefix, tree in sources.items() for name, data in tree.items()}
     errors = []
     texts = {}
     for name, data in files.items():
@@ -54,9 +55,9 @@ def verify_source(root: Path) -> tuple[list[str], int, int]:
     all_names = set(files)
     references = 0
     for name, text in texts.items():
-        for match in re.finditer(r'"(GorillaMap[/\\][^"\r\n]+)"', text):
+        for match in re.finditer(r'"(GorillaMap(?:Server)?[/\\][^"\r\n]+)"', text):
             path = match.group(1).replace("\\", "/")
-            relative = path[len(PREFIX) + 1:]
+            relative = path
             tail = text[match.end():]
             if re.match(r'\s*\+', tail):
                 # The UI chooses an icon from this explicit array and builds its
@@ -71,12 +72,12 @@ def verify_source(root: Path) -> tuple[list[str], int, int]:
                         references += 1
                         expanded = relative + icon + expression.group(1)
                         if expanded not in all_names:
-                            errors.append(f"{name}: missing whitelisted texture {PREFIX}/{expanded}")
+                            errors.append(f"{name}: missing whitelisted texture {expanded}")
                 else:
                     errors.append(f"{name}: unresolved dynamic resource path {path}; add explicit verification")
                 continue
             references += 1
-            if relative not in all_names and not (source / relative).is_dir():
+            if relative not in all_names and not (root / "Source" / relative).is_dir():
                 errors.append(f"{name}: missing resource or script directory {path}")
     layout_names = set()
     layouts = 0
@@ -110,9 +111,19 @@ def verify_source(root: Path) -> tuple[list[str], int, int]:
             for action in re.findall(r'(?:GetInputByName|LocalPress)\(\s*"(UAGorilla[^"\r\n]+)"', text):
                 if action not in input_names:
                     errors.append(f"{name}: missing input declaration {action}")
-    for layer in ("3_Game", "4_World", "5_Mission"):
-        if not any(name.startswith(f"Scripts/{layer}/") and name.endswith(".c") for name in files):
-            errors.append(f"No script source in {layer}")
+    for prefix, tree in sources.items():
+        required_layers = ("3_Game", "5_Mission") if prefix == PREFIX else ("3_Game", "4_World", "5_Mission")
+        for layer in required_layers:
+            if not any(name.startswith(f"Scripts/{layer}/") and name.endswith(".c") for name in tree):
+                errors.append(f"{prefix}: no script source in {layer}")
+        config = texts.get(f"{prefix}/config.cpp", "")
+        for layer in required_layers:
+            if f"{prefix}/Scripts/{layer}" not in config:
+                errors.append(f"{prefix}: config.cpp does not register {layer}")
+    server_config = texts.get("GorillaMapServer/config.cpp", "")
+    required = re.search(r"requiredAddons\s*\[\s*\]\s*=\s*\{([^}]+)\}", server_config)
+    if not required or '"GorillaMap"' not in required.group(1):
+        errors.append("GorillaMapServer: requiredAddons[] must explicitly depend on GorillaMap")
     if not layouts:
         errors.append("No UI layouts")
     return errors, len(files), references
@@ -121,18 +132,21 @@ def verify_source(root: Path) -> tuple[list[str], int, int]:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=ROOT)
-    parser.add_argument("--pbo", type=Path, help="Additionally require PBO to match source exactly")
+    parser.add_argument("--pbo", type=Path, help="Require client/common PBO to match source exactly")
+    parser.add_argument("--server-pbo", type=Path, help="Require server-only PBO to match source exactly")
     args = parser.parse_args()
     root = args.root.resolve()
     try:
         errors, count, references = verify_source(root)
-        if args.pbo:
-            properties, packed = decode_pbo(args.pbo.read_bytes())
-            expected = {safe_name(k): v for k, v in collect_source(root / "Source" / PREFIX).items()}
-            if properties.get("prefix") != PREFIX:
-                errors.append("PBO prefix is not GorillaMap")
+        for prefix, packed_path in (("GorillaMap", args.pbo), ("GorillaMapServer", args.server_pbo)):
+            if not packed_path:
+                continue
+            properties, packed = decode_pbo(packed_path.read_bytes())
+            expected = {safe_name(k): v for k, v in collect_source(root / "Source" / prefix).items()}
+            if properties.get("prefix") != prefix:
+                errors.append(f"PBO prefix is not {prefix}")
             if packed != expected:
-                errors.append("PBO contents differ from current source; rebuild")
+                errors.append(f"{prefix}: PBO contents differ from current source; rebuild")
     except (PboError, OSError) as exc:
         print(f"VERIFY FAILED: {exc}", file=sys.stderr)
         return 1
@@ -141,8 +155,8 @@ def main() -> int:
             print(f"FAIL: {error}", file=sys.stderr)
         return 1
     print(f"PASS: {count} source/resource files; {references} virtual path references; XML and widget references; structural delimiters.")
-    if args.pbo:
-        print("PASS: PBO prefix, SHA-1 and every packaged file match current source.")
+    if args.pbo or args.server_pbo:
+        print("PASS: supplied PBO prefixes, SHA-1 and every packaged file match current source.")
     print("Not checked: Enforce compilation, DayZ GUI rendering, network/gameplay runtime.")
     return 0
 

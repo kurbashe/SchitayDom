@@ -1,0 +1,1 @@
+Unsigned development PBO. Before use with verifySignatures=2, sign with your own DSUtils private key. Never distribute the .biprivatekey. Server-only addon: install ONLY on server through -serverMod; do not send it to clients.

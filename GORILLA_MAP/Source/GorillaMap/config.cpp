@@ -16,7 +16,7 @@ class CfgMods
         dir = "GorillaMap";
         name = "GORILLA MAP";
         author = "GORILLA";
-        version = "0.1.0";
+        version = "0.1.1";
         type = "mod";
         inputs = "GorillaMap/GUI/inputs.xml";
         dependencies[] = {"Game", "World", "Mission"};

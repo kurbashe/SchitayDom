@@ -17,6 +17,10 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 PREFIX = "GorillaMap"
+ADDONS = (
+    ("GorillaMap", "@GorillaMap", "gorillamap.pbo", "mod.cpp"),
+    ("GorillaMapServer", "@GorillaMapServer", "gorillamap_server.pbo", "mod_server.cpp"),
+)
 VERS = 0x56657273
 HEADER = struct.Struct("<5I")
 ALLOWED = {".c", ".cpp", ".layout", ".xml", ".paa", ".tga", ".csv", ".json", ".rvmat", ".imageset", ".edds"}
@@ -139,57 +143,85 @@ def zip_entry(archive: zipfile.ZipFile, name: str, data: bytes) -> None:
     archive.writestr(info, data)
 
 
+def validate_boundaries(addons: dict[str, dict[str, bytes]]) -> None:
+    """Prevent accidentally shipping server storage/authority in the client PBO."""
+    import re
+    client = addons["GorillaMap"]
+    server = addons["GorillaMapServer"]
+    forbidden = re.compile(r"\b(?:GMapService|GMapConfig|GMapStore|GMapAccount|GMapGroup|GMapInvite|GMapServerRPC|GorillaMapServer)\b")
+    for name, data in client.items():
+        if Path(name).suffix.lower() in (".c", ".cpp", ".xml", ".layout"):
+            if forbidden.search(data.decode("utf-8-sig")):
+                raise PboError(f"Client addon contains server-only dependency/code: {name}")
+    if any(name.replace("\\", "/").lower().startswith("gui/") for name in server):
+        raise PboError("Server-only addon must not contain GUI resources")
+
+
 def build(root: Path, output: Path) -> tuple[Path, Path]:
-    source = root / "Source" / PREFIX
-    if output.resolve() == source.resolve() or source.resolve() in output.resolve().parents:
-        raise PboError("Output directory must stay outside the PBO source tree")
-    files = collect_source(source)
-    mod = root / "mod.cpp"
-    if not mod.is_file():
-        raise PboError(f"Missing launcher metadata: {mod}")
-    pbo_bytes = encode_pbo(files)
-    properties, decoded = decode_pbo(pbo_bytes)
-    expected = {safe_name(k): v for k, v in files.items()}
-    if properties.get("prefix") != PREFIX or decoded != expected:
-        raise PboError("PBO round-trip verification failed")
+    for prefix, _, _, _ in ADDONS:
+        source = (root / "Source" / prefix).resolve()
+        if output.resolve() == source or source in output.resolve().parents:
+            raise PboError("Output directory must stay outside the PBO source tree")
+    sources = {prefix: collect_source(root / "Source" / prefix) for prefix, _, _, _ in ADDONS}
+    validate_boundaries(sources)
     output.mkdir(parents=True, exist_ok=True)
-    addon = output / "@GorillaMap" / "addons" / "gorillamap.pbo"
-    addon.parent.mkdir(parents=True, exist_ok=True)
-    addon.write_bytes(pbo_bytes)
-    (addon.parent.parent / "mod.cpp").write_bytes(mod.read_bytes())
-    keys = addon.parent.parent / "keys"
-    keys.mkdir(exist_ok=True)
-    key_readme = (
-        "Unsigned development PBO. Before use with verifySignatures=2, sign with your own "
-        "DSUtils private key, place the .bisign next to the PBO, and install only the public "
-        ".bikey in the server keys directory. Never distribute the .biprivatekey.\n"
-    ).encode()
-    (keys / "README.txt").write_bytes(key_readme)
+    release_files = {}
     manifest = {
-        "prefix": PREFIX,
-        "pbo_sha256": hashlib.sha256(pbo_bytes).hexdigest(),
-        "files": {name: hashlib.sha256(value).hexdigest() for name, value in sorted(files.items())},
+        "schema_version": 2,
+        "addons": {},
         "status": "Packaged source; Enforce compilation and in-game validation required",
         "signed": False,
     }
+    first_addon = None
+    for prefix, folder, filename, metadata in ADDONS:
+        files = sources[prefix]
+        mod = root / metadata
+        if not mod.is_file():
+            raise PboError(f"Missing launcher metadata: {mod}")
+        pbo_bytes = encode_pbo(files, prefix)
+        properties, decoded = decode_pbo(pbo_bytes)
+        expected = {safe_name(k): v for k, v in files.items()}
+        if properties.get("prefix") != prefix or decoded != expected:
+            raise PboError(f"PBO round-trip verification failed: {prefix}")
+        pbo_name = f"{folder}/addons/{filename}"
+        addon = output / pbo_name
+        if first_addon is None:
+            first_addon = addon
+        key_readme = (
+            "Unsigned development PBO. Before use with verifySignatures=2, sign with your own "
+            "DSUtils private key. Never distribute the .biprivatekey. "
+            + ("Client/common addon: install in -mod on server and clients; place .bisign next to PBO "
+               "and public .bikey in server keys directory.\n" if prefix == PREFIX else
+               "Server-only addon: install ONLY on server through -serverMod; do not send it to clients.\n")
+        ).encode()
+        release_files[pbo_name] = pbo_bytes
+        release_files[f"{folder}/mod.cpp"] = mod.read_bytes()
+        release_files[f"{folder}/keys/README.txt"] = key_readme
+        manifest["addons"][prefix] = {
+            "path": pbo_name,
+            "pbo_sha256": hashlib.sha256(pbo_bytes).hexdigest(),
+            "files": {name: hashlib.sha256(value).hexdigest() for name, value in sorted(files.items())},
+        }
     manifest_bytes = (json.dumps(manifest, indent=2, ensure_ascii=False) + "\n").encode()
-    (output / "build-manifest.json").write_bytes(manifest_bytes)
+    release_files["build-manifest.json"] = manifest_bytes
+    for name, data in release_files.items():
+        destination = output / name
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_bytes(data)
     release = output / "GORILLA_MAP.zip"
     with zipfile.ZipFile(release, "w", compression=zipfile.ZIP_DEFLATED) as archive:
-        zip_entry(archive, "@GorillaMap/addons/gorillamap.pbo", pbo_bytes)
-        zip_entry(archive, "@GorillaMap/mod.cpp", mod.read_bytes())
-        zip_entry(archive, "@GorillaMap/keys/README.txt", key_readme)
-        zip_entry(archive, "build-manifest.json", manifest_bytes)
+        for name, data in release_files.items():
+            zip_entry(archive, name, data)
         for folder in ("Source", "ServerProfile", "docs", "tools"):
             for file in sorted((root / folder).rglob("*")):
                 if file.is_file() and not file.is_symlink() and "__pycache__" not in file.parts and file.suffix != ".pyc":
                     if file.suffix.lower() in (".biprivatekey", ".pem", ".key"):
                         raise PboError(f"Refusing to distribute private key file: {file}")
                     zip_entry(archive, file.relative_to(root).as_posix(), file.read_bytes())
-        for name in ("README.md", "LICENSE", "mod.cpp"):
+        for name in ("README.md", "LICENSE", "mod.cpp", "mod_server.cpp"):
             if (root / name).is_file():
                 zip_entry(archive, name, (root / name).read_bytes())
-    return addon, release
+    return first_addon, release
 
 
 def main() -> int:
@@ -204,7 +236,8 @@ def main() -> int:
     except (OSError, PboError) as exc:
         print(f"BUILD FAILED: {exc}", file=sys.stderr)
         return 1
-    print(f"PBO: {addon}")
+    print(f"Client/common PBO: {addon}")
+    print(f"Server-only PBO: {output / '@GorillaMapServer/addons/gorillamap_server.pbo'}")
     print(f"ZIP: {release}")
     print("PBO structure, prefix, contents and checksum verified; not an Enforce compilation.")
     return 0
